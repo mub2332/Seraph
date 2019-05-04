@@ -75,6 +75,8 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
+        
+        filteredContacts.sort(by: { $0.name < $1.name })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
