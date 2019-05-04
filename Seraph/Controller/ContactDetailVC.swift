@@ -33,6 +33,27 @@ class ContactDetailVC : UIViewController {
         }
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        return
+    }
     
+    @IBAction func saveContact(_ sender: Any) {
+        if nameTextField.text == "" || phoneTextField.text == "" {
+            self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number")
+            return
+        }
+        
+        if !PhoneValidator.isPhone(phoneTextField.text!) {
+            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number")
+            return
+        }
+        
+        
+    }
     
+    @IBAction func clearAll(_ sender: Any) {
+        nameTextField.text = ""
+        phoneTextField.text = ""
+    }
 }

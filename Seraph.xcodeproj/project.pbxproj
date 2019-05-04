@@ -15,6 +15,9 @@
 		D33D70B7227D0CDA00FBA31F /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */; };
 		D33D70B9227D0D7400FBA31F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */; };
 		D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */; };
+		D33D70BE227D6C0300FBA31F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70BD227D6C0300FBA31F /* UIViewController+Extension.swift */; };
+		D33D70C0227D6D4400FBA31F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70BF227D6D4400FBA31F /* String+Extension.swift */; };
+		D33D70C5227D6E3F00FBA31F /* PhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70C4227D6E3F00FBA31F /* PhoneValidator.swift */; };
 		D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3966A09226CBCBD008776B8 /* AppDelegate.swift */; };
 		D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A0D226CBCBD008776B8 /* Main.storyboard */; };
 		D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3966A10226CBCBF008776B8 /* Assets.xcassets */; };
@@ -31,6 +34,9 @@
 		D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
+		D33D70BD227D6C0300FBA31F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		D33D70BF227D6D4400FBA31F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D33D70C4227D6E3F00FBA31F /* PhoneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneValidator.swift; sourceTree = "<group>"; };
 		D3966A06226CBCBD008776B8 /* Seraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3966A09226CBCBD008776B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3966A0E226CBCBD008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +94,23 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		D33D70BC227D6BDF00FBA31F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D33D70BD227D6C0300FBA31F /* UIViewController+Extension.swift */,
+				D33D70BF227D6D4400FBA31F /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D33D70C3227D6E2C00FBA31F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D33D70C4227D6E3F00FBA31F /* PhoneValidator.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		D39669FD226CBCBD008776B8 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +132,8 @@
 		D3966A08226CBCBD008776B8 /* Seraph */ = {
 			isa = PBXGroup;
 			children = (
+				D33D70C3227D6E2C00FBA31F /* Utilities */,
+				D33D70BC227D6BDF00FBA31F /* Extensions */,
 				D33D70B1227C84E400FBA31F /* Database */,
 				D33D70AB227C7ED300FBA31F /* Model */,
 				D33D70A8227C7E8A00FBA31F /* Controller */,
@@ -265,7 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33D70BE227D6C0300FBA31F /* UIViewController+Extension.swift in Sources */,
+				D33D70C0227D6D4400FBA31F /* String+Extension.swift in Sources */,
 				D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */,
+				D33D70C5227D6E3F00FBA31F /* PhoneValidator.swift in Sources */,
 				D33D70B3227C84F300FBA31F /* FirebaseController.swift in Sources */,
 				D33D70AD227C7EDE00FBA31F /* Contact.swift in Sources */,
 				D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */,
