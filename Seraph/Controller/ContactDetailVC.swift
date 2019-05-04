@@ -49,7 +49,16 @@ class ContactDetailVC : UIViewController {
             return
         }
         
+        let name = nameTextField.text!
+        let phone = phoneTextField.text!
         
+        if let contact = contactToEdit {
+            let _ = databaseController?.editContact(contact: contact, name: name, phone: phone)
+            self.displayMessage(title: "Success!", message: "Contact has been updated!")
+        } else {
+            let _ = databaseController?.addContact(name: name, phone: phone)
+            self.displayMessage(title: "Success!", message: "Contact has been added!")
+        }
     }
     
     @IBAction func clearAll(_ sender: Any) {
