@@ -25,6 +25,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search contacts"
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         definesPresentationContext = true
         
@@ -45,6 +46,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
             filteredContacts = allContacts
         }
         
+        filteredContacts.sort(by: {$0.name < $1.name})
         tableView.reloadData()
     }
     

@@ -41,7 +41,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         contactsRef = database.collection("contacts")
         contactsRef?.addSnapshotListener { querySnapshot, error in
             guard (querySnapshot?.documents) != nil else {
-                print("Error fetching documents: \(error)")
+                print("Error fetching documents: \(error?.localizedDescription)")
                 return
             }
             
