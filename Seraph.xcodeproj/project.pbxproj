@@ -14,6 +14,7 @@
 		D33D70B5227D0C4A00FBA31F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */; };
 		D33D70B7227D0CDA00FBA31F /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */; };
 		D33D70B9227D0D7400FBA31F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */; };
+		D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */; };
 		D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3966A09226CBCBD008776B8 /* AppDelegate.swift */; };
 		D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A0D226CBCBD008776B8 /* Main.storyboard */; };
 		D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3966A10226CBCBF008776B8 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
 		D3966A06226CBCBD008776B8 /* Seraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3966A09226CBCBD008776B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3966A0E226CBCBD008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */,
+				D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */,
 				D33D70B3227C84F300FBA31F /* FirebaseController.swift in Sources */,
 				D33D70AD227C7EDE00FBA31F /* Contact.swift in Sources */,
 				D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */,

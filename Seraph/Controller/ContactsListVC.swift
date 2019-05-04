@@ -33,6 +33,8 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         databaseController = appDelegate.databaseController
     }
     
+    // MARK:- Search results controller
+    
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text?.lowercased(),
             searchText.count > 0 {
@@ -46,6 +48,8 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         tableView.reloadData()
     }
     
+    // MARK:- Table view delegate
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredContacts.count
     }
@@ -57,6 +61,8 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         cell.textLabel?.text = contact.name
         return cell
     }
+    
+    // MARK:- Database listener
     
     var listenerType: ListenerType = ListenerType.contacts
     
@@ -74,6 +80,18 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
+    }
+    
+    // MARK:- Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditContact" {
+            let controller = segue.destination as! ContactDetailVC
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.contactToEdit = filteredContacts[indexPath.row]
+            }
+        }
     }
     
 }
