@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ContactDetailVC : UIViewController {
+class ContactDetailVC : UIViewController, DatabaseListener {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     
     var contactToEdit: Contact?
+    var allContacts = [Contact]()
     
     weak var databaseController: DatabaseProtocol?
     
@@ -52,6 +53,13 @@ class ContactDetailVC : UIViewController {
         let name = nameTextField.text!
         let phone = phoneTextField.text!
         
+        if allContacts.contains(where: {contact in
+            return contact.name == name
+        }) {
+            self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", shouldPopViewControllerOnCompletion: false)
+            return
+        }
+        
         if let contact = contactToEdit {
             let _ = databaseController?.editContact(contact: contact, name: name, phone: phone)
             self.displayMessage(title: "Success!", message: "Contact has been updated!", shouldPopViewControllerOnCompletion: true)
@@ -64,5 +72,23 @@ class ContactDetailVC : UIViewController {
     @IBAction func clearAll(_ sender: Any) {
         nameTextField.text = ""
         phoneTextField.text = ""
+    }
+    
+    // MARK:- Database listener
+    
+    var listenerType: ListenerType = ListenerType.contacts
+    
+    func onContactsListChange(change: DatabaseChange, contacts: [Contact]) {
+        allContacts = contacts
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
     }
 }
