@@ -26,6 +26,9 @@
                                 <state key="normal" title="Send SOS">
                                     <color key="titleColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendSOS:" destination="QcR-J9-m1y" eventType="touchUpInside" id="p0c-eR-x0m"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seraph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8h-Ba-J9R">
                                 <rect key="frame" x="16" y="52" width="288" height="78"/>
@@ -33,15 +36,32 @@
                                 <color key="textColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeraphLogo" translatesAutoresizingMaskIntoConstraints="NO" id="nS2-qk-80A">
+                                <rect key="frame" x="100" y="146" width="120" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="RUH-Hu-4G5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safety is just a click away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuY-S2-hjO">
+                                <rect key="frame" x="63" y="278" width="194" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MRH-Lz-wQe" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="32" id="13s-ID-Iup"/>
                             <constraint firstItem="cgg-n4-tK7" firstAttribute="bottom" secondItem="MRH-Lz-wQe" secondAttribute="bottom" constant="32" id="29V-l9-Yn3"/>
+                            <constraint firstItem="QuY-S2-hjO" firstAttribute="centerX" secondItem="bcf-84-86g" secondAttribute="centerX" id="DkT-Kx-mdE"/>
+                            <constraint firstItem="nS2-qk-80A" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="100" id="IbO-rS-kUr"/>
                             <constraint firstItem="b8h-Ba-J9R" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="16" id="KrQ-bz-GNE"/>
                             <constraint firstItem="b8h-Ba-J9R" firstAttribute="top" secondItem="cgg-n4-tK7" secondAttribute="top" constant="32" id="QJ9-SF-K5d"/>
                             <constraint firstItem="cgg-n4-tK7" firstAttribute="trailing" secondItem="b8h-Ba-J9R" secondAttribute="trailing" constant="16" id="X73-sT-eFa"/>
+                            <constraint firstItem="QuY-S2-hjO" firstAttribute="top" secondItem="nS2-qk-80A" secondAttribute="bottom" constant="32" id="ggW-c4-9gg"/>
                             <constraint firstItem="cgg-n4-tK7" firstAttribute="trailing" secondItem="MRH-Lz-wQe" secondAttribute="trailing" constant="32" id="x0W-uo-Sjb"/>
+                            <constraint firstItem="nS2-qk-80A" firstAttribute="top" secondItem="b8h-Ba-J9R" secondAttribute="bottom" constant="16" id="xnT-Jm-Qj5"/>
+                            <constraint firstItem="cgg-n4-tK7" firstAttribute="trailing" secondItem="nS2-qk-80A" secondAttribute="trailing" constant="100" id="zCg-7l-ags"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cgg-n4-tK7"/>
                     </view>
@@ -234,6 +254,9 @@
             <point key="canvasLocation" x="-1179.375" y="703.52112676056333"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SeraphLogo" width="216" height="191"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KrZ-bT-VSC"/>
     </inferredMetricsTieBreakers>

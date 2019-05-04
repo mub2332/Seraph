@@ -72,6 +72,24 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         return cell
     }
     
+    // MARK:- Table view cell trailing swipe action
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        // Set action to perform when swiped
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, handler) in
+            self.deleteContact(contact: self.filteredContacts[indexPath.row])
+        })
+        
+        deleteAction.backgroundColor = .red
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        return config
+    }
+    
+    func deleteContact(contact: Contact) {
+        let _ = databaseController?.deleteContact(contact: contact)
+    }
+    
     // MARK:- Database listener
     
     var listenerType: ListenerType = ListenerType.contacts
