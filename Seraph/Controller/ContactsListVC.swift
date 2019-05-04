@@ -10,12 +10,16 @@ import UIKit
 
 class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseListener {
     
+    let bgColorView = UIView()
+    
     var filteredContacts = [Contact]()
     var allContacts = [Contact]()
     weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bgColorView.backgroundColor = UIColor(red: 85/255, green: 186/255, blue: 85/255, alpha: 1)
         
         filteredContacts = allContacts
         
@@ -61,6 +65,8 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         let contact = filteredContacts[indexPath.row]
         
         cell.textLabel?.text = contact.name
+        cell.textLabel?.textColor = UIColor.white
+        cell.selectedBackgroundView = bgColorView
         return cell
     }
     
