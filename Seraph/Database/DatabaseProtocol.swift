@@ -21,6 +21,7 @@ enum ListenerType {
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}
+    func onContactsListChange(change: DatabaseChange, contacts: [Contact])
 }
 
 protocol DatabaseProtocol: AnyObject {

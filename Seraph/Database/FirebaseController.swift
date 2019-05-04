@@ -64,8 +64,76 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
             if change.type == .modified {
                 print("Updated contact: \(change.document.data())")
-                
+                let index = getContactIndexByID(reference: documentRef)!
+                contactsList[index].name = name
+                contactsList[index].phone = phone
+            }
+            
+            if change.type == .removed {
+                print("Removed contact: \(change.document.data())")
+                if let index = getContactIndexByID(reference: documentRef) {
+                    contactsList.remove(at: index)
+                }
+            }
+            
+            listeners.invoke { (listener) in
+                if listener.listenerType == .contacts || listener.listenerType == .all {
+                    listener.onContactsListChange(change: .update, contacts: contactsList)
+                }
             }
         }
+    }
+    
+    func getContactIndexByID(reference: String) -> Int? {
+        for contact in contactsList {
+            if(contact.id == reference) {
+                return contactsList.firstIndex(of: contact)
+            }
+        }
+        
+        return nil
+    }
+    
+    func getContactByID(reference: String) -> Contact? {
+        for contact in contactsList {
+            if(contact.id == reference) {
+                return contact
+            }
+        }
+        
+        return nil
+    }
+    
+    func addContact(name: String, phone: String) -> Contact {
+        let id = contactsRef?.addDocument(data: [
+            "name": name,
+            "phone": phone
+        ])
+        let contact = Contact(name: name, phone: phone, id: id!.documentID)
+        
+        return contact
+    }
+    
+    func deleteContact(contact: Contact) {
+        contactsRef?.document(contact.id).delete()
+    }
+    
+    func editContact(contact: Contact, name: String, phone: String) {
+        contactsRef?.document(contact.id).updateData([
+            "name": name,
+            "phone": phone
+        ])
+    }
+    
+    func addListener(listener: DatabaseListener) {
+        listeners.addDelegate(listener)
+        
+        if listener.listenerType == ListenerType.contacts || listener.listenerType == ListenerType.all {
+            listener.onContactsListChange(change: .update, contacts: contactsList)
+        }
+    }
+    
+    func removeListener(listener: DatabaseListener) {
+        listeners.removeDelegate(listener)
     }
 }
