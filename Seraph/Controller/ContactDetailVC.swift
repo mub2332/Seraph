@@ -15,8 +15,24 @@ class ContactDetailVC : UIViewController {
     
     var contactToEdit: Contact?
     
+    weak var databaseController: DatabaseProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setup database controller
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
+        
+        if let contactToEdit = contactToEdit {
+            title = "Edit Contact"
+            nameTextField.text = contactToEdit.name
+            phoneTextField.text = contactToEdit.phone
+        } else {
+            title = "Add Contact"
+        }
     }
+    
+    
     
 }
