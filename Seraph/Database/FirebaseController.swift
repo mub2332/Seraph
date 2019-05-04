@@ -54,23 +54,19 @@ class FirebaseController: NSObject, DatabaseProtocol {
             let documentRef = change.document.documentID
             let name = change.document.data()["name"] as! String
             let phone = change.document.data()["phone"] as! String
-            print(documentRef)
             
             if change.type == .added {
-                print("New contact: \(change.document.data())")
                 let newContact = Contact(name: name, phone: phone, id: documentRef)
                 contactsList.append(newContact)
             }
             
             if change.type == .modified {
-                print("Updated contact: \(change.document.data())")
                 let index = getContactIndexByID(reference: documentRef)!
                 contactsList[index].name = name
                 contactsList[index].phone = phone
             }
             
             if change.type == .removed {
-                print("Removed contact: \(change.document.data())")
                 if let index = getContactIndexByID(reference: documentRef) {
                     contactsList.remove(at: index)
                 }
