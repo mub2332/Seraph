@@ -8,26 +8,51 @@
 
 import UIKit
 
-class ContactsListVC: UITableViewController, DatabaseListener {
+class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseListener {
     
-    var contactsList = [Contact]()
+    var filteredContacts = [Contact]()
+    var allContacts = [Contact]()
     weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filteredContacts = allContacts
+        
+        // Setup search controller
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search contacts"
+        navigationItem.searchController = searchController
+        
+        definesPresentationContext = true
         
         // Setup database controller
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text?.lowercased(),
+            searchText.count > 0 {
+            filteredContacts = allContacts.filter({(contact: Contact) -> Bool in
+                return (contact.name.lowercased().contains(searchText))
+            })
+        } else {
+            filteredContacts = allContacts
+        }
+        
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactsList.count
+        return filteredContacts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        let contact = contactsList[indexPath.row]
+        let contact = filteredContacts[indexPath.row]
         
         cell.textLabel?.text = contact.name
         return cell
@@ -36,7 +61,8 @@ class ContactsListVC: UITableViewController, DatabaseListener {
     var listenerType: ListenerType = ListenerType.contacts
     
     func onContactsListChange(change: DatabaseChange, contacts: [Contact]) {
-        contactsList = contacts
+        allContacts = contacts
+        filteredContacts = contacts
         tableView.reloadData()
     }
     
