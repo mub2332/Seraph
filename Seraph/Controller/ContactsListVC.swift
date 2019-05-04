@@ -97,6 +97,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     func onContactsListChange(change: DatabaseChange, contacts: [Contact]) {
         allContacts = contacts
         filteredContacts = contacts
+        filteredContacts.sort(by: { $0.name < $1.name })
         tableView.reloadData()
     }
     
