@@ -40,12 +40,12 @@ class ContactDetailVC : UIViewController {
     
     @IBAction func saveContact(_ sender: Any) {
         if nameTextField.text == "" || phoneTextField.text == "" {
-            self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number")
+            self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number", shouldPopViewControllerOnCompletion: false)
             return
         }
         
         if !PhoneValidator.isPhone(phoneTextField.text!) {
-            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number")
+            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", shouldPopViewControllerOnCompletion: false)
             return
         }
         
@@ -54,10 +54,10 @@ class ContactDetailVC : UIViewController {
         
         if let contact = contactToEdit {
             let _ = databaseController?.editContact(contact: contact, name: name, phone: phone)
-            self.displayMessage(title: "Success!", message: "Contact has been updated!")
+            self.displayMessage(title: "Success!", message: "Contact has been updated!", shouldPopViewControllerOnCompletion: true)
         } else {
             let _ = databaseController?.addContact(name: name, phone: phone)
-            self.displayMessage(title: "Success!", message: "Contact has been added!")
+            self.displayMessage(title: "Success!", message: "Contact has been added!", shouldPopViewControllerOnCompletion: true)
         }
     }
     

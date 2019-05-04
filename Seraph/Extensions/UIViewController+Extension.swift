@@ -10,13 +10,18 @@ import UIKit
 
 extension UIViewController {
     
-    func displayMessage(title: String, message: String) {
+    func displayMessage(title: String, message: String, shouldPopViewControllerOnCompletion: Bool) {
         // display alert with the specified title and message
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         // pop current view controller on dismissing alert message
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (_) in
-            self.navigationController?.popViewController(animated: true)
-        }))
+        if shouldPopViewControllerOnCompletion {
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (_) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+        } else {
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        }
+        
         self.present(alert, animated: true, completion: nil)
     }
     
