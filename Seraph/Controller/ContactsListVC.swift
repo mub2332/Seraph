@@ -123,6 +123,11 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
                 controller.contactToEdit = filteredContacts[indexPath.row]
             }
         }
+        
+        if segue.identifier == "AddContact" {
+            let controller = segue.destination as! ContactDetailVC
+            controller.allContacts = allContacts
+        }
     }
     
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactDetailVC : UIViewController, DatabaseListener {
+class ContactDetailVC : UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -72,23 +72,5 @@ class ContactDetailVC : UIViewController, DatabaseListener {
     @IBAction func clearAll(_ sender: Any) {
         nameTextField.text = ""
         phoneTextField.text = ""
-    }
-    
-    // MARK:- Database listener
-    
-    var listenerType: ListenerType = ListenerType.contacts
-    
-    func onContactsListChange(change: DatabaseChange, contacts: [Contact]) {
-        allContacts = contacts
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        databaseController?.addListener(listener: self)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        databaseController?.removeListener(listener: self)
     }
 }
