@@ -28,6 +28,9 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search contacts"
+        searchController.searchBar.tintColor = UIColor(red: 85/255, green: 186/255, blue: 85/255, alpha: 1)
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         

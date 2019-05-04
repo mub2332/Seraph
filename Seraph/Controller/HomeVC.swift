@@ -14,8 +14,4 @@ class HomeVC : UIViewController {
         super.viewDidLoad()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
 }
