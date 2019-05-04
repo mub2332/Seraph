@@ -8,11 +8,16 @@
 
 import UIKit
 import MessageUI
+import CoreLocation
 
-class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, DatabaseListener {
+class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate, DatabaseListener {
     
     var contactsList = [Contact]()
     var phoneNumbers = [String]()
+    
+    var locationManager: CLLocationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    var address = ""
     
     weak var databaseController: DatabaseProtocol?
     
@@ -25,13 +30,62 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, Databas
     }
     
     @IBAction func sendSOS(_ sender: Any) {
-        let messageVC = MFMessageComposeViewController()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         
-        messageVC.body = "Help me (Don't panic this is a test for my app heehee)"
-        messageVC.recipients = phoneNumbers
-        messageVC.messageComposeDelegate = self
+        locationManager.startUpdatingLocation()
         
-        self.present(messageVC, animated: true, completion: nil)
+        if let location = currentLocation {
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+                var placemark: CLPlacemark!
+                placemark = placemarks?[0]
+                
+                // Location name
+                if let locationName = placemark.name {
+                    self.address += locationName + ", "
+                }
+                
+                // Street address
+                if let street = placemark.thoroughfare {
+                    self.address += street + ", "
+                }
+                
+                // City
+                if let city = placemark.locality {
+                    self.address += city + ", "
+                }
+                
+                if let state = placemark.administrativeArea {
+                    self.address += state + " "
+                }
+                
+                // Zip code
+                if let zip = placemark.postalCode {
+                    self.address += zip + ", "
+                }
+                
+                // Country
+                if let country = placemark.country {
+                    self.address += country
+                }
+                
+                let messageVC = MFMessageComposeViewController()
+                
+                messageVC.body = "Help me at " + self.address
+                messageVC.recipients = self.phoneNumbers
+                messageVC.messageComposeDelegate = self
+                
+                self.present(messageVC, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last!
+        currentLocation = location
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
