@@ -22,7 +22,7 @@
 		D33D70CC227D975400FBA31F /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70CB227D975400FBA31F /* BorderButton.swift */; };
 		D33D70CE227D97D300FBA31F /* GreenBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70CD227D97D300FBA31F /* GreenBorderButton.swift */; };
 		D33D70D0227D98E500FBA31F /* OrangeBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70CF227D98E500FBA31F /* OrangeBorderButton.swift */; };
-		D33D70D4227E83B200FBA31F /* BlackTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70D3227E83B200FBA31F /* BlackTextField.swift */; };
+		D33D70D4227E83B200FBA31F /* TintedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70D3227E83B200FBA31F /* TintedTextField.swift */; };
 		D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3966A09226CBCBD008776B8 /* AppDelegate.swift */; };
 		D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A0D226CBCBD008776B8 /* Main.storyboard */; };
 		D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3966A10226CBCBF008776B8 /* Assets.xcassets */; };
@@ -46,7 +46,7 @@
 		D33D70CB227D975400FBA31F /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		D33D70CD227D97D300FBA31F /* GreenBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBorderButton.swift; sourceTree = "<group>"; };
 		D33D70CF227D98E500FBA31F /* OrangeBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeBorderButton.swift; sourceTree = "<group>"; };
-		D33D70D3227E83B200FBA31F /* BlackTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackTextField.swift; sourceTree = "<group>"; };
+		D33D70D3227E83B200FBA31F /* TintedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintedTextField.swift; sourceTree = "<group>"; };
 		D3966A06226CBCBD008776B8 /* Seraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3966A09226CBCBD008776B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3966A0E226CBCBD008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				D33D70CB227D975400FBA31F /* BorderButton.swift */,
 				D33D70CD227D97D300FBA31F /* GreenBorderButton.swift */,
 				D33D70CF227D98E500FBA31F /* OrangeBorderButton.swift */,
-				D33D70D3227E83B200FBA31F /* BlackTextField.swift */,
+				D33D70D3227E83B200FBA31F /* TintedTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D33D70D4227E83B200FBA31F /* BlackTextField.swift in Sources */,
+				D33D70D4227E83B200FBA31F /* TintedTextField.swift in Sources */,
 				D33D70BE227D6C0300FBA31F /* UIViewController+Extension.swift in Sources */,
 				D33D70D0227D98E500FBA31F /* OrangeBorderButton.swift in Sources */,
 				D33D70C0227D6D4400FBA31F /* String+Extension.swift in Sources */,

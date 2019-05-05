@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MRH-Lz-wQe" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="32" id="13s-ID-Iup"/>
                             <constraint firstItem="cgg-n4-tK7" firstAttribute="bottom" secondItem="MRH-Lz-wQe" secondAttribute="bottom" constant="32" id="29V-l9-Yn3"/>
@@ -65,7 +65,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cgg-n4-tK7"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="bId-vO-EmB"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="bId-vO-EmB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aje-f0-yaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,7 +78,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tp7-pk-eJU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="SeE-0p-TfL" style="IBUITableViewCellStyleDefault" id="0aM-dS-JSo">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -96,7 +96,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="Zkp-jU-35b" kind="show" identifier="EditContact" id="KrZ-bT-VSC"/>
@@ -135,7 +135,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="O5n-NO-gB6" customClass="BlackTextField" customModule="Seraph" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="O5n-NO-gB6" customClass="TintTextField" customModule="Seraph" customModuleProvider="target">
                                 <rect key="frame" x="16" y="133" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.10980392156862745" green="0.10980392160000001" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,12 +148,12 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="rPo-ZE-tKF" customClass="BlackTextField" customModule="Seraph" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="rPo-ZE-tKF" customClass="TintTextField" customModule="Seraph" customModuleProvider="target">
                                 <rect key="frame" x="16" y="216" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wP-cV-hvM" customClass="OrangeBorderButton" customModule="Seraph" customModuleProvider="target">
                                 <rect key="frame" x="32" y="437" width="256" height="50"/>
@@ -168,7 +168,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="O5n-NO-gB6" firstAttribute="top" secondItem="MkZ-42-hPA" secondAttribute="bottom" constant="16" id="0bt-AS-8LB"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="O5n-NO-gB6" secondAttribute="trailing" constant="16" id="53U-OU-0Ju"/>
@@ -256,6 +256,7 @@
     </scenes>
     <resources>
         <image name="SeraphLogo" width="216" height="191"/>
+        <image name="home" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KrZ-bT-VSC"/>
