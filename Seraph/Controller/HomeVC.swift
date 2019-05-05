@@ -37,50 +37,56 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         
         locationManager.startUpdatingLocation()
         
+        let messageVC = MFMessageComposeViewController()
+        
         if let location = currentLocation {
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
-                var placemark: CLPlacemark!
-                placemark = placemarks?[0]
-                
-                // Location name
-                if let locationName = placemark.name {
-                    self.address += locationName + ", "
-                }
-                
-                // Street address
-                if let street = placemark.thoroughfare {
-                    self.address += street + ", "
-                }
-                
-                // City
-                if let city = placemark.locality {
-                    self.address += city + ", "
-                }
-                
-                if let state = placemark.administrativeArea {
-                    self.address += state + " "
-                }
-                
-                // Zip code
-                if let zip = placemark.postalCode {
-                    self.address += zip + ", "
-                }
-                
-                // Country
-                if let country = placemark.country {
-                    self.address += country
-                }
-                
-                let messageVC = MFMessageComposeViewController()
-                
-                messageVC.body = "Help me at " + self.address
-                messageVC.recipients = self.phoneNumbers
-                messageVC.messageComposeDelegate = self
-                
-                self.present(messageVC, animated: true, completion: nil)
-            })
+            messageVC.body = "Help me at this location"
+            messageVC.addAttachmentURL(locationVCardURLFromCoordinate(coordinate: location.coordinate)! as URL, withAlternateFilename: "vCard.loc.vcf")
+        } else {
+            self.displayMessage(title: "Oops!", message: "Location could not be found", shouldPopViewControllerOnCompletion: false)
+            locationManager.stopUpdatingLocation()
+            return
         }
+        
+        locationManager.stopUpdatingLocation()
+        messageVC.recipients = self.phoneNumbers
+        messageVC.messageComposeDelegate = self
+        
+        self.present(messageVC, animated: true, completion: nil)
+    }
+    
+    func locationVCardURLFromCoordinate(coordinate: CLLocationCoordinate2D) -> NSURL?
+    {
+        guard let cachesPathString = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first else {
+            print("Error: couldn't find the caches directory.")
+            return nil
+        }
+        
+        guard CLLocationCoordinate2DIsValid(coordinate) else {
+            print("Error: the supplied coordinate, \(coordinate), is not valid.")
+            return nil
+        }
+        
+        let vCardString = [
+            "BEGIN:VCARD",
+            "VERSION:3.0",
+            "N:;Shared Location;;;",
+            "FN:Shared Location",
+            "item1.URL;type=pref:http://maps.apple.com/?ll=\(coordinate.latitude),\(coordinate.longitude)",
+            "item1.X-ABLabel:map url",
+            "END:VCARD"
+            ].joined(separator: "\n")
+        
+        let vCardFilePath = (cachesPathString as NSString).appendingPathComponent("vCard.loc.vcf")
+        
+        do {
+            try vCardString.write(toFile: vCardFilePath, atomically: true, encoding: String.Encoding.utf8)
+        }
+        catch let error {
+            print("Error, \(error), saving vCard: \(vCardString) to file path: \(vCardFilePath).")
+        }
+        
+        return NSURL(fileURLWithPath: vCardFilePath)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
