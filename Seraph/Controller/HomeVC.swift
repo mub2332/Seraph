@@ -42,17 +42,13 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         if let location = currentLocation {
             messageVC.body = "Help me at this location"
             messageVC.addAttachmentURL(locationVCardURLFromCoordinate(coordinate: location.coordinate)! as URL, withAlternateFilename: "vCard.loc.vcf")
-        } else {
-            self.displayMessage(title: "Oops!", message: "Location could not be found", shouldPopViewControllerOnCompletion: false)
             locationManager.stopUpdatingLocation()
-            return
+            messageVC.recipients = self.phoneNumbers
+            messageVC.messageComposeDelegate = self
+            
+            self.present(messageVC, animated: true, completion: nil)
         }
         
-        locationManager.stopUpdatingLocation()
-        messageVC.recipients = self.phoneNumbers
-        messageVC.messageComposeDelegate = self
-        
-        self.present(messageVC, animated: true, completion: nil)
     }
     
     func locationVCardURLFromCoordinate(coordinate: CLLocationCoordinate2D) -> NSURL?
@@ -116,6 +112,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     
     func onContactsListChange(change: DatabaseChange, contacts: [Contact]) {
         contactsList = contacts
+        phoneNumbers = []
         for contact in contactsList {
             phoneNumbers.append(contact.phone)
         }
