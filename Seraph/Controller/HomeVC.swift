@@ -24,19 +24,17 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
         // Setup database controller
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
     }
     
     @IBAction func sendSOS(_ sender: Any) {
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.distanceFilter = 10
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        
-        locationManager.startUpdatingLocation()
-        
         let messageVC = MFMessageComposeViewController()
         
         if let location = currentLocation {
@@ -48,7 +46,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
             
             self.present(messageVC, animated: true, completion: nil)
         }
-        
+
     }
     
     func locationVCardURLFromCoordinate(coordinate: CLLocationCoordinate2D) -> NSURL?
@@ -120,11 +118,13 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        locationManager.startUpdatingLocation()
         databaseController?.addListener(listener: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        locationManager.stopUpdatingLocation()
         databaseController?.removeListener(listener: self)
     }
     

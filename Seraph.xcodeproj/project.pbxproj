@@ -23,6 +23,7 @@
 		D33D70CE227D97D300FBA31F /* GreenBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70CD227D97D300FBA31F /* GreenBorderButton.swift */; };
 		D33D70D0227D98E500FBA31F /* OrangeBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70CF227D98E500FBA31F /* OrangeBorderButton.swift */; };
 		D33D70D4227E83B200FBA31F /* TintedClearButtonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70D3227E83B200FBA31F /* TintedClearButtonTextField.swift */; };
+		D33D70DA227F0ED600FBA31F /* RedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70D9227F0ED600FBA31F /* RedBorderButton.swift */; };
 		D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3966A09226CBCBD008776B8 /* AppDelegate.swift */; };
 		D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A0D226CBCBD008776B8 /* Main.storyboard */; };
 		D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3966A10226CBCBF008776B8 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		D33D70CD227D97D300FBA31F /* GreenBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBorderButton.swift; sourceTree = "<group>"; };
 		D33D70CF227D98E500FBA31F /* OrangeBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeBorderButton.swift; sourceTree = "<group>"; };
 		D33D70D3227E83B200FBA31F /* TintedClearButtonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintedClearButtonTextField.swift; sourceTree = "<group>"; };
+		D33D70D9227F0ED600FBA31F /* RedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBorderButton.swift; sourceTree = "<group>"; };
 		D3966A06226CBCBD008776B8 /* Seraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3966A09226CBCBD008776B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3966A0E226CBCBD008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				D33D70CD227D97D300FBA31F /* GreenBorderButton.swift */,
 				D33D70CF227D98E500FBA31F /* OrangeBorderButton.swift */,
 				D33D70D3227E83B200FBA31F /* TintedClearButtonTextField.swift */,
+				D33D70D9227F0ED600FBA31F /* RedBorderButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				D33D70D0227D98E500FBA31F /* OrangeBorderButton.swift in Sources */,
 				D33D70C0227D6D4400FBA31F /* String+Extension.swift in Sources */,
 				D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */,
+				D33D70DA227F0ED600FBA31F /* RedBorderButton.swift in Sources */,
 				D33D70C5227D6E3F00FBA31F /* PhoneValidator.swift in Sources */,
 				D33D70B3227C84F300FBA31F /* FirebaseController.swift in Sources */,
 				D33D70AD227C7EDE00FBA31F /* Contact.swift in Sources */,

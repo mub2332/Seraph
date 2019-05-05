@@ -18,13 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRH-Lz-wQe" customClass="GreenBorderButton" customModule="Seraph" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRH-Lz-wQe" customClass="RedBorderButton" customModule="Seraph" customModuleProvider="target">
                                 <rect key="frame" x="32" y="437" width="256" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VzA-3W-Xic"/>
                                 </constraints>
                                 <state key="normal" title="Send SOS">
-                                    <color key="titleColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
                                     <action selector="sendSOS:" destination="QcR-J9-m1y" eventType="touchUpInside" id="p0c-eR-x0m"/>

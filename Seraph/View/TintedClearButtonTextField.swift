@@ -35,7 +35,7 @@ class TintedClearButtonTextField: UITextField {
     }
     
     private func tintClearImage() {
-        for view in subviews as! [UIView] {
+        for view in subviews {
             if view is UIButton {
                 let button = view as! UIButton
                 if let uiImage = button.image(for: .highlighted) {
