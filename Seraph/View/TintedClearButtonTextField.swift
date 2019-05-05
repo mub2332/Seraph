@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TintTextField: UITextField {
+class TintedClearButtonTextField: UITextField {
     
     var tintedClearImage: UIImage?
     
