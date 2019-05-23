@@ -6,8 +6,5 @@ target 'Seraph' do
   use_frameworks!
 
   # Pods for Seraph
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
   
 end
