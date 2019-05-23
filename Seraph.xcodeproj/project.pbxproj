@@ -11,7 +11,6 @@
 		D333BD44229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D333BD43229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift */; };
 		D33D70AA227C7E9B00FBA31F /* ContactsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */; };
 		D33D70B3227C84F300FBA31F /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B2227C84F300FBA31F /* DatabaseController.swift */; };
-		D33D70B5227D0C4A00FBA31F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */; };
 		D33D70B7227D0CDA00FBA31F /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */; };
 		D33D70B9227D0D7400FBA31F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */; };
 		D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */; };
@@ -39,7 +38,6 @@
 		D333BD43229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Extension.swift"; sourceTree = "<group>"; };
 		D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListVC.swift; sourceTree = "<group>"; };
 		D33D70B2227C84F300FBA31F /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
-		D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				D3966A0D226CBCBD008776B8 /* Main.storyboard */,
 				D3966A10226CBCBF008776B8 /* Assets.xcassets */,
 				D3966A12226CBCBF008776B8 /* LaunchScreen.storyboard */,
-				D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */,
 				D3966A15226CBCBF008776B8 /* Info.plist */,
 			);
 			path = Seraph;
@@ -257,7 +254,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3966A14226CBCBF008776B8 /* LaunchScreen.storyboard in Resources */,
-				D33D70B5227D0C4A00FBA31F /* GoogleService-Info.plist in Resources */,
 				D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */,
 				D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */,
 			);
