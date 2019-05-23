@@ -42,6 +42,7 @@ class ContactDetailVC : UIViewController {
     }
     
     @IBAction func saveContact(_ sender: Any) {
+        nameTextField.text = nameTextField.text?.trimTrailingWhitespace()
         phoneTextField.text = phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if nameTextField.text == "" || phoneTextField.text == "" {
@@ -58,7 +59,7 @@ class ContactDetailVC : UIViewController {
         let phone = phoneTextField.text!
         
         if allContacts.contains(where: {contact in
-            return contact.name == name
+            return contact.name.lowercased() == name.lowercased()
         }) {
             self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", shouldPopViewControllerOnCompletion: false)
             return

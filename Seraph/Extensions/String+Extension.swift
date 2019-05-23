@@ -10,6 +10,14 @@ import UIKit
 
 extension String {
     
+    func trimTrailingWhitespace() -> String {
+        if let trailingWs = self.range(of: "\\s+$", options: .regularExpression) {
+            return self.replacingCharacters(in: trailingWs, with: "")
+        } else {
+            return self
+        }
+    }
+    
     enum RegularExpressions: String {
         case phone = "^\\({0,1}((0|\\+61)(2|4|3|7|8)){0,1}\\){0,1}(\\ |-){0,1}[0-9]{2}(\\ |-){0,1}[0-9]{2}(\\ |-){0,1}[0-9]{1}(\\ |-){0,1}[0-9]{3}$"
     }

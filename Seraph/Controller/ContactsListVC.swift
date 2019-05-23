@@ -15,9 +15,6 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     var filteredContacts = [Contact]()
     var allContacts = [Contact]()
     
-    var contactsDictionary = [String:[String]]()
-    var contactSectionTitles = [String]()
-    
     weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
@@ -26,7 +23,6 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         bgColorView.backgroundColor = UIColor(red: 85/255, green: 186/255, blue: 85/255, alpha: 1)
         
         filteredContacts = allContacts
-        sectionizeContacts()
         
         // Setup search controller
         let searchController = UISearchController(searchResultsController: nil)
@@ -45,24 +41,6 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         databaseController = appDelegate.databaseController        
     }
     
-    func sectionizeContacts() {
-        contactsDictionary.removeAll()
-        contactSectionTitles.removeAll()
-        
-        for contact in filteredContacts {
-            let contactKey = String(contact.name.prefix(1))
-            if var contactValues = contactsDictionary[contactKey] {
-                contactValues.append(contact.name)
-                contactsDictionary[contactKey] = contactValues
-            } else {
-                contactsDictionary[contactKey] = [contact.name]
-            }
-        }
-        
-        contactSectionTitles = [String](contactsDictionary.keys)
-        contactSectionTitles = contactSectionTitles.sorted(by: { $0 < $1 })
-    }
-    
     // MARK:- Search results controller
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -76,40 +54,22 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         }
         
         filteredContacts.sort(by: {$0.name.lowercased() < $1.name.lowercased()})
-        sectionizeContacts()
         tableView.reloadData()
     }
     
     // MARK:- Table view delegate
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return contactSectionTitles.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return contactSectionTitles[section]
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let contactKey = contactSectionTitles[section]
-        
-        if let contactValues = contactsDictionary[contactKey] {
-            return contactValues.count
-        }
-        
-        return 0
+        return filteredContacts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-
-        let contactKey = contactSectionTitles[indexPath.section]
-        if let contactValues = contactsDictionary[contactKey] {
-            cell.textLabel?.text = contactValues[indexPath.row]
-            cell.textLabel?.textColor = UIColor.white
-            cell.selectedBackgroundView = bgColorView
-        }
+        let contact = filteredContacts[indexPath.row]
         
+        cell.textLabel?.text = contact.name
+        cell.textLabel?.textColor = UIColor.white
+        cell.selectedBackgroundView = bgColorView
         return cell
     }
     
@@ -139,7 +99,6 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         allContacts = contacts
         filteredContacts = contacts
         filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
-        sectionizeContacts()
         tableView.reloadData()
     }
     
@@ -148,7 +107,6 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         databaseController?.addListener(listener: self)
         
         filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
-        sectionizeContacts()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
