@@ -32,6 +32,8 @@ class ContactDetailVC : UIViewController {
         } else {
             title = "Add Contact"
         }
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func cancel(_ sender: Any) {

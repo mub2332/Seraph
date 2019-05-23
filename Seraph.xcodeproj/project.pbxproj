@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		308D31EBC448AF4BA186F0C8 /* Pods_Seraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F3479374E55E7D94A197EE /* Pods_Seraph.framework */; };
 		D33D70AA227C7E9B00FBA31F /* ContactsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */; };
-		D33D70AD227C7EDE00FBA31F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70AC227C7EDE00FBA31F /* Contact.swift */; };
-		D33D70B3227C84F300FBA31F /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B2227C84F300FBA31F /* FirebaseController.swift */; };
+		D33D70B3227C84F300FBA31F /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B2227C84F300FBA31F /* DatabaseController.swift */; };
 		D33D70B5227D0C4A00FBA31F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */; };
 		D33D70B7227D0CDA00FBA31F /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */; };
 		D33D70B9227D0D7400FBA31F /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */; };
@@ -28,14 +27,16 @@
 		D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A0D226CBCBD008776B8 /* Main.storyboard */; };
 		D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3966A10226CBCBF008776B8 /* Assets.xcassets */; };
 		D3966A14226CBCBF008776B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A12226CBCBF008776B8 /* LaunchScreen.storyboard */; };
+		D3C9CBB2229647AE001F59AB /* Seraph.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB0229647AE001F59AB /* Seraph.xcdatamodeld */; };
+		D3C9CBB52296482C001F59AB /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB32296482C001F59AB /* Contact+CoreDataClass.swift */; };
+		D3C9CBB62296482C001F59AB /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6655BAB6C599DFC56C882E90 /* Pods-Seraph.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraph.release.xcconfig"; path = "Target Support Files/Pods-Seraph/Pods-Seraph.release.xcconfig"; sourceTree = "<group>"; };
 		795746536B99D1ED646AD56F /* Pods-Seraph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraph.debug.xcconfig"; path = "Target Support Files/Pods-Seraph/Pods-Seraph.debug.xcconfig"; sourceTree = "<group>"; };
 		D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListVC.swift; sourceTree = "<group>"; };
-		D33D70AC227C7EDE00FBA31F /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		D33D70B2227C84F300FBA31F /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		D33D70B2227C84F300FBA31F /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		D3966A13226CBCBF008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3966A15226CBCBF008776B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3C9CBAF2294DAB1001F59AB /* Seraph.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Seraph.entitlements; sourceTree = "<group>"; };
+		D3C9CBB1229647AE001F59AB /* Contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact.xcdatamodel; sourceTree = "<group>"; };
+		D3C9CBB32296482C001F59AB /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1F3479374E55E7D94A197EE /* Pods_Seraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,7 +97,9 @@
 		D33D70AB227C7ED300FBA31F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D33D70AC227C7EDE00FBA31F /* Contact.swift */,
+				D3C9CBB32296482C001F59AB /* Contact+CoreDataClass.swift */,
+				D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */,
+				D3C9CBB0229647AE001F59AB /* Seraph.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,7 +107,7 @@
 		D33D70B1227C84E400FBA31F /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				D33D70B2227C84F300FBA31F /* FirebaseController.swift */,
+				D33D70B2227C84F300FBA31F /* DatabaseController.swift */,
 				D33D70B6227D0CDA00FBA31F /* DatabaseProtocol.swift */,
 				D33D70B8227D0D7400FBA31F /* MulticastDelegate.swift */,
 			);
@@ -330,12 +336,14 @@
 				D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */,
 				D33D70DA227F0ED600FBA31F /* RedBorderButton.swift in Sources */,
 				D33D70C5227D6E3F00FBA31F /* PhoneValidator.swift in Sources */,
-				D33D70B3227C84F300FBA31F /* FirebaseController.swift in Sources */,
-				D33D70AD227C7EDE00FBA31F /* Contact.swift in Sources */,
+				D33D70B3227C84F300FBA31F /* DatabaseController.swift in Sources */,
 				D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */,
 				D33D70AA227C7E9B00FBA31F /* ContactsListVC.swift in Sources */,
 				D33D70B7227D0CDA00FBA31F /* DatabaseProtocol.swift in Sources */,
+				D3C9CBB52296482C001F59AB /* Contact+CoreDataClass.swift in Sources */,
+				D3C9CBB62296482C001F59AB /* Contact+CoreDataProperties.swift in Sources */,
 				D33D70C9227D94CD00FBA31F /* HomeVC.swift in Sources */,
+				D3C9CBB2229647AE001F59AB /* Seraph.xcdatamodeld in Sources */,
 				D33D70B9227D0D7400FBA31F /* MulticastDelegate.swift in Sources */,
 				D33D70CC227D975400FBA31F /* BorderButton.swift in Sources */,
 				D33D70CE227D97D300FBA31F /* GreenBorderButton.swift in Sources */,
@@ -544,6 +552,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D3C9CBB0229647AE001F59AB /* Seraph.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3C9CBB1229647AE001F59AB /* Contact.xcdatamodel */,
+			);
+			currentVersion = D3C9CBB1229647AE001F59AB /* Contact.xcdatamodel */;
+			path = Seraph.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D39669FE226CBCBD008776B8 /* Project object */;
 }
