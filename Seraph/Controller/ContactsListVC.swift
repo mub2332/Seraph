@@ -52,7 +52,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
             filteredContacts = allContacts
         }
         
-        filteredContacts.sort(by: {$0.name < $1.name})
+        filteredContacts.sort(by: {$0.name.lowercased() < $1.name.lowercased()})
         tableView.reloadData()
     }
     
@@ -97,7 +97,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     func onContactsListChange(change: DatabaseChange, contacts: [Contact]) {
         allContacts = contacts
         filteredContacts = contacts
-        filteredContacts.sort(by: { $0.name < $1.name })
+        filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
         tableView.reloadData()
     }
     
@@ -105,7 +105,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
         
-        filteredContacts.sort(by: { $0.name < $1.name })
+        filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
     }
     
     override func viewWillDisappear(_ animated: Bool) {

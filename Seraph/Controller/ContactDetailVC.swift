@@ -42,6 +42,8 @@ class ContactDetailVC : UIViewController {
     }
     
     @IBAction func saveContact(_ sender: Any) {
+        phoneTextField.text = phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if nameTextField.text == "" || phoneTextField.text == "" {
             self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number", shouldPopViewControllerOnCompletion: false)
             return
