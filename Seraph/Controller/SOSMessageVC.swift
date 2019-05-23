@@ -23,6 +23,7 @@ class SOSMessageVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         messageTextField.text = readStringData(forKey: "SOS Message")
+        messageTextField.becomeFirstResponder()
     }
     
     @IBAction func save(_ sender: Any) {
@@ -37,6 +38,7 @@ class SOSMessageVC: UIViewController {
     @IBAction func clear(_ sender: Any) {
         messageTextField.text = ""
     }
+    
     func reset() {
         tabBarController?.selectedIndex = 0
         return
