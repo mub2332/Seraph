@@ -55,6 +55,7 @@
 		D3966A10226CBCBF008776B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3966A13226CBCBF008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3966A15226CBCBF008776B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3C9CBAF2294DAB1001F59AB /* Seraph.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Seraph.entitlements; sourceTree = "<group>"; };
 		E1F3479374E55E7D94A197EE /* Pods_Seraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,6 +158,7 @@
 		D3966A08226CBCBD008776B8 /* Seraph */ = {
 			isa = PBXGroup;
 			children = (
+				D3C9CBAF2294DAB1001F59AB /* Seraph.entitlements */,
 				D33D70CA227D973500FBA31F /* View */,
 				D33D70C3227D6E2C00FBA31F /* Utilities */,
 				D33D70BC227D6BDF00FBA31F /* Extensions */,
@@ -215,6 +217,11 @@
 				TargetAttributes = {
 					D3966A05226CBCBD008776B8 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -478,6 +485,7 @@
 			baseConfigurationReference = 795746536B99D1ED646AD56F /* Pods-Seraph.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Seraph/Seraph.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UN9G82JWJD;
 				INFOPLIST_FILE = Seraph/Info.plist;
@@ -498,6 +506,7 @@
 			baseConfigurationReference = 6655BAB6C599DFC56C882E90 /* Pods-Seraph.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Seraph/Seraph.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UN9G82JWJD;
 				INFOPLIST_FILE = Seraph/Info.plist;
