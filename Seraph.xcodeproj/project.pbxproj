@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		308D31EBC448AF4BA186F0C8 /* Pods_Seraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F3479374E55E7D94A197EE /* Pods_Seraph.framework */; };
+		D333BD44229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D333BD43229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift */; };
 		D33D70AA227C7E9B00FBA31F /* ContactsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */; };
 		D33D70B3227C84F300FBA31F /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70B2227C84F300FBA31F /* DatabaseController.swift */; };
 		D33D70B5227D0C4A00FBA31F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		6655BAB6C599DFC56C882E90 /* Pods-Seraph.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraph.release.xcconfig"; path = "Target Support Files/Pods-Seraph/Pods-Seraph.release.xcconfig"; sourceTree = "<group>"; };
 		795746536B99D1ED646AD56F /* Pods-Seraph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seraph.debug.xcconfig"; path = "Target Support Files/Pods-Seraph/Pods-Seraph.debug.xcconfig"; sourceTree = "<group>"; };
+		D333BD43229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Extension.swift"; sourceTree = "<group>"; };
 		D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListVC.swift; sourceTree = "<group>"; };
 		D33D70B2227C84F300FBA31F /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		D33D70B4227D0C4A00FBA31F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				D33D70BD227D6C0300FBA31F /* UIViewController+Extension.swift */,
 				D33D70BF227D6D4400FBA31F /* String+Extension.swift */,
+				D333BD43229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				D33D70BB227D5FBA00FBA31F /* ContactDetailVC.swift in Sources */,
 				D33D70DA227F0ED600FBA31F /* RedBorderButton.swift in Sources */,
 				D33D70C5227D6E3F00FBA31F /* PhoneValidator.swift in Sources */,
+				D333BD44229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift in Sources */,
 				D33D70B3227C84F300FBA31F /* DatabaseController.swift in Sources */,
 				D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */,
 				D33D70AA227C7E9B00FBA31F /* ContactsListVC.swift in Sources */,

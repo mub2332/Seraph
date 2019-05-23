@@ -21,6 +21,8 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     
     weak var databaseController: DatabaseProtocol?
     
+    var spinner: UIActivityIndicatorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +37,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     }
     
     @IBAction func sendSOS(_ sender: Any) {
+        spinner = showLoader(view: self.view)
         let messageVC = MFMessageComposeViewController()
         
         if let location = currentLocation {
@@ -44,9 +47,25 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
             messageVC.recipients = self.phoneNumbers
             messageVC.messageComposeDelegate = self
             
-            self.present(messageVC, animated: true, completion: nil)
+            self.present(messageVC, animated: true, completion: spinner!.dismissLoader)
         }
 
+    }
+    
+    func showLoader(view: UIView) -> UIActivityIndicatorView {
+        //Customize as per your need
+        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height:40))
+        spinner.backgroundColor = UIColor(red: 33/255, green: 33/255, blue: 35/255, alpha: 1)
+        spinner.layer.cornerRadius = 3.0
+        spinner.clipsToBounds = true
+        spinner.hidesWhenStopped = true
+        spinner.style = UIActivityIndicatorView.Style.white;
+        spinner.center = view.center
+        self.view.addSubview(spinner)
+        spinner.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        return spinner
     }
     
     func locationVCardURLFromCoordinate(coordinate: CLLocationCoordinate2D) -> NSURL?
