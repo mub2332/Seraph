@@ -20,7 +20,7 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-    func displayMessage(title: String, message: String, shouldPopViewControllerOnCompletion: Bool) {
+    func displayMessage(title: String, message: String, onCompletion: @escaping () -> Void) {
         // display alert with the specified title and message
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         // Get alert content view
@@ -33,13 +33,11 @@ extension UIViewController {
         // change button text color for alert
         alert.view.tintColor = UIColor(red: 85/255, green: 186/255, blue: 85/255, alpha: 1)
         // pop current view controller on dismissing alert message
-        if shouldPopViewControllerOnCompletion {
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (_) in
-                self.navigationController?.popViewController(animated: true)
-            }))
-        } else {
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        }
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: UIAlertAction.Style.default,
+                                      handler: { (_) in
+            onCompletion()
+        }))
         
         self.present(alert, animated: true, completion: nil)
     }

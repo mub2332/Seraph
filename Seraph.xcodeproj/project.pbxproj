@@ -30,6 +30,8 @@
 		D3C9CBB2229647AE001F59AB /* Seraph.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB0229647AE001F59AB /* Seraph.xcdatamodeld */; };
 		D3C9CBB52296482C001F59AB /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB32296482C001F59AB /* Contact+CoreDataClass.swift */; };
 		D3C9CBB62296482C001F59AB /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */; };
+		D3E592942296D0FE005F0FBC /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E592932296D0FE005F0FBC /* UserDefaults.swift */; };
+		D3E592982296D6AC005F0FBC /* SOSMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E592972296D6AC005F0FBC /* SOSMessageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		D3C9CBB1229647AE001F59AB /* Contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact.xcdatamodel; sourceTree = "<group>"; };
 		D3C9CBB32296482C001F59AB /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D3E592932296D0FE005F0FBC /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		D3E592972296D6AC005F0FBC /* SOSMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOSMessageVC.swift; sourceTree = "<group>"; };
 		E1F3479374E55E7D94A197EE /* Pods_Seraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,7 @@
 				D33D70A9227C7E9B00FBA31F /* ContactsListVC.swift */,
 				D33D70BA227D5FBA00FBA31F /* ContactDetailVC.swift */,
 				D33D70C8227D94CD00FBA31F /* HomeVC.swift */,
+				D3E592972296D6AC005F0FBC /* SOSMessageVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D33D70C4227D6E3F00FBA31F /* PhoneValidator.swift */,
+				D3E592932296D0FE005F0FBC /* UserDefaults.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E592982296D6AC005F0FBC /* SOSMessageVC.swift in Sources */,
 				D33D70D4227E83B200FBA31F /* TintedClearButtonTextField.swift in Sources */,
 				D33D70BE227D6C0300FBA31F /* UIViewController+Extension.swift in Sources */,
 				D33D70D0227D98E500FBA31F /* OrangeBorderButton.swift in Sources */,
@@ -307,6 +314,7 @@
 				D3C9CBB62296482C001F59AB /* Contact+CoreDataProperties.swift in Sources */,
 				D33D70C9227D94CD00FBA31F /* HomeVC.swift in Sources */,
 				D3C9CBB2229647AE001F59AB /* Seraph.xcdatamodeld in Sources */,
+				D3E592942296D0FE005F0FBC /* UserDefaults.swift in Sources */,
 				D33D70B9227D0D7400FBA31F /* MulticastDelegate.swift in Sources */,
 				D33D70CC227D975400FBA31F /* BorderButton.swift in Sources */,
 				D33D70CE227D97D300FBA31F /* GreenBorderButton.swift in Sources */,

@@ -46,12 +46,12 @@ class ContactDetailVC : UIViewController {
         phoneTextField.text = phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if nameTextField.text == "" || phoneTextField.text == "" {
-            self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number", shouldPopViewControllerOnCompletion: false)
+            self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number", onCompletion: returnNil)
             return
         }
         
         if !PhoneValidator.isPhone(phoneTextField.text!) {
-            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", shouldPopViewControllerOnCompletion: false)
+            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", onCompletion: returnNil)
             return
         }
         
@@ -61,17 +61,28 @@ class ContactDetailVC : UIViewController {
         if allContacts.contains(where: {contact in
             return contact.name.lowercased() == name.lowercased()
         }) {
-            self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", shouldPopViewControllerOnCompletion: false)
+            self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", onCompletion: returnNil)
             return
         }
         
         if let contact = contactToEdit {
             let _ = databaseController?.editContact(contact: contact, name: name, phone: phone)
-            self.displayMessage(title: "Success!", message: "Contact has been updated!", shouldPopViewControllerOnCompletion: true)
+            self.displayMessage(title: "Success!", message: "Contact has been updated!",
+                                onCompletion: popViewController)
         } else {
             let _ = databaseController?.addContact(name: name, phone: phone)
-            self.displayMessage(title: "Success!", message: "Contact has been added!", shouldPopViewControllerOnCompletion: true)
+            self.displayMessage(title: "Success!", message: "Contact has been added!",
+                                onCompletion: popViewController)
         }
+    }
+    
+    func returnNil() {
+        return
+    }
+    
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
+        return
     }
     
     @IBAction func clearAll(_ sender: Any) {

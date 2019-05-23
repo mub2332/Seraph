@@ -41,7 +41,13 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         let messageVC = MFMessageComposeViewController()
         
         if let location = currentLocation {
-            messageVC.body = "Help me at this location"
+            let message = readStringData(forKey: "SOS Message")
+            if message == "" {
+                messageVC.body = "Help me at this location"
+            } else {
+                messageVC.body = message
+            }
+            
             messageVC.addAttachmentURL(locationVCardURLFromCoordinate(coordinate: location.coordinate)! as URL, withAlternateFilename: "vCard.loc.vcf")
             locationManager.stopUpdatingLocation()
             messageVC.recipients = self.phoneNumbers

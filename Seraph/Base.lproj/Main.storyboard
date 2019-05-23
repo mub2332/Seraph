@@ -119,7 +119,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0W0-3N-QGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-181.875" y="703.52112676056333"/>
+            <point key="canvasLocation" x="815.625" y="703.52112676056333"/>
         </scene>
         <!--Contact Detail-->
         <scene sceneID="vxL-I5-Re9">
@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpw-YY-KaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="663.75" y="703.52112676056333"/>
+            <point key="canvasLocation" x="1661.25" y="703.52112676056333"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IBc-CN-xkc">
@@ -225,6 +225,7 @@
                     <connections>
                         <segue destination="QcR-J9-m1y" kind="relationship" relationship="viewControllers" id="DbY-Ci-ycS"/>
                         <segue destination="LD2-CW-K4W" kind="relationship" relationship="viewControllers" id="94y-kx-2wx"/>
+                        <segue destination="9hw-eF-N7C" kind="relationship" relationship="viewControllers" id="td2-KT-npS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8F-Dj-X55" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,12 +252,104 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGo-G2-fhB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1179.375" y="703.52112676056333"/>
+            <point key="canvasLocation" x="-181.875" y="703.52112676056333"/>
+        </scene>
+        <!--SOS Message-->
+        <scene sceneID="I4h-k5-sxt">
+            <objects>
+                <viewController id="ecc-iY-2R2" customClass="SOSMessageVC" customModule="Seraph" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TKl-Up-e3Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit SOS Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDS-qy-BCE">
+                                <rect key="frame" x="16" y="96" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ElE-bO-Hf8">
+                                <rect key="frame" x="16" y="133" width="288" height="250"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="wAO-vD-hQv"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fb5-Il-zEK" customClass="OrangeBorderButton" customModule="Seraph" customModuleProvider="target">
+                                <rect key="frame" x="32" y="437" width="256" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="koD-V7-qSS"/>
+                                </constraints>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="clear:" destination="ecc-iY-2R2" eventType="touchUpInside" id="p2j-VU-pb0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="ElE-bO-Hf8" secondAttribute="trailing" constant="16" id="2SK-4p-oM2"/>
+                            <constraint firstItem="ElE-bO-Hf8" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="16" id="GQ9-AD-61d"/>
+                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="bottom" secondItem="fb5-Il-zEK" secondAttribute="bottom" constant="32" id="Gpj-Av-myi"/>
+                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="fb5-Il-zEK" secondAttribute="trailing" constant="32" id="QMf-44-zgI"/>
+                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="oDS-qy-BCE" secondAttribute="trailing" constant="16" id="cNa-po-tAO"/>
+                            <constraint firstItem="ElE-bO-Hf8" firstAttribute="top" secondItem="oDS-qy-BCE" secondAttribute="bottom" constant="16" id="p9y-mW-DeK"/>
+                            <constraint firstItem="oDS-qy-BCE" firstAttribute="top" secondItem="uS1-DH-Cjf" secondAttribute="top" constant="32" id="pVs-Sp-FTD"/>
+                            <constraint firstItem="oDS-qy-BCE" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="16" id="sdP-gA-72f"/>
+                            <constraint firstItem="fb5-Il-zEK" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="32" id="xXA-zf-6ad"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uS1-DH-Cjf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SOS Message" id="hzS-6j-Chz">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="O7N-oB-7P0">
+                            <color key="tintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="cancel:" destination="ecc-iY-2R2" id="eH1-FS-QSf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="IdM-BH-I8f">
+                            <connections>
+                                <action selector="save:" destination="ecc-iY-2R2" id="a2L-eb-jcg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="messageTextField" destination="ElE-bO-Hf8" id="6AP-Tl-o8K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qXK-B7-fAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1188.75" y="1126.056338028169"/>
+        </scene>
+        <!--SOS-->
+        <scene sceneID="ofS-jC-YDk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9hw-eF-N7C" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SOS" image="sos" id="TPW-hR-Vgd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="hUz-3M-97R">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ecc-iY-2R2" kind="relationship" relationship="rootViewController" id="8ps-L0-ewV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pS-UG-9fG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2186.25" y="1126.056338028169"/>
         </scene>
     </scenes>
     <resources>
         <image name="SeraphLogo" width="216" height="191"/>
         <image name="home" width="24" height="24"/>
+        <image name="sos" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KrZ-bT-VSC"/>
