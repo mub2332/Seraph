@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBarController = window?.rootViewController as! UITabBarController
         let viewController = tabBarController.viewControllers?.first as! HomeVC
-        viewController.sendSOS()
+        viewController.getLocationAndSendMessage()
         
         return true
     }

@@ -19,6 +19,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var address = ""
+    var timer: Timer?
     
     weak var databaseController: DatabaseProtocol?
     
@@ -30,13 +31,15 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(getLocationAndSendMessage), userInfo: nil, repeats: true)
+        
         // Setup database controller
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
     }
     
     @IBAction func sendSOS(_ sender: Any) {
-        sendSOS()
+        getLocationAndSendMessage()
         donateShortcut()
     }
     
@@ -50,11 +53,12 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         activity.becomeCurrent()
     }
     
-    func sendSOS() {
-        let spinner = showLoader(view: self.view)
+    @objc func getLocationAndSendMessage() {
         let messageVC = MFMessageComposeViewController()
-        
+
         if let location = currentLocation {
+            timer?.invalidate()
+            let spinner = showLoader(view: self.view)
             let message = readStringData(forKey: "SOS Message")
             if message == "" {
                 messageVC.body = "Help me at this location"
@@ -69,6 +73,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
             
             self.present(messageVC, animated: true, completion: spinner.dismissLoader)
         }
+        
     }
     
     func showLoader(view: UIView) -> UIActivityIndicatorView {
