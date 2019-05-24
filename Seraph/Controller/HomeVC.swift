@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 import CoreLocation
+import Intents
 
 class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate, DatabaseListener {
     
@@ -20,8 +21,6 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     var address = ""
     
     weak var databaseController: DatabaseProtocol?
-    
-    var spinner: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +36,22 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     }
     
     @IBAction func sendSOS(_ sender: Any) {
-        spinner = showLoader(view: self.view)
+        sendSOS()
+        donateShortcut()
+    }
+    
+    func donateShortcut() {
+        let activity = NSUserActivity(activityType: "com.example.seraph.SendSOS")
+        activity.title = "Send SOS"
+        activity.isEligibleForSearch = true
+        activity.isEligibleForPrediction = true
+        activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: "com.example.seraph.SendSOS")
+        view.userActivity = activity
+        activity.becomeCurrent()
+    }
+    
+    func sendSOS() {
+        let spinner = showLoader(view: self.view)
         let messageVC = MFMessageComposeViewController()
         
         if let location = currentLocation {
@@ -53,9 +67,8 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
             messageVC.recipients = self.phoneNumbers
             messageVC.messageComposeDelegate = self
             
-            self.present(messageVC, animated: true, completion: spinner!.dismissLoader)
+            self.present(messageVC, animated: true, completion: spinner.dismissLoader)
         }
-
     }
     
     func showLoader(view: UIView) -> UIActivityIndicatorView {

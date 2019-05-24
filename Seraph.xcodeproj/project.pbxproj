@@ -32,6 +32,7 @@
 		D3C9CBB62296482C001F59AB /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */; };
 		D3E592942296D0FE005F0FBC /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E592932296D0FE005F0FBC /* UserDefaults.swift */; };
 		D3E592982296D6AC005F0FBC /* SOSMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E592972296D6AC005F0FBC /* SOSMessageVC.swift */; };
+		D3FF341722981BEB00B71150 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FF341622981BEB00B71150 /* Intents.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3E592932296D0FE005F0FBC /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		D3E592972296D6AC005F0FBC /* SOSMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOSMessageVC.swift; sourceTree = "<group>"; };
+		D3FF341622981BEB00B71150 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		E1F3479374E55E7D94A197EE /* Pods_Seraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3FF341722981BEB00B71150 /* Intents.framework in Frameworks */,
 				308D31EBC448AF4BA186F0C8 /* Pods_Seraph.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +193,7 @@
 		D9B015EDB855072AAFB88719 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3FF341622981BEB00B71150 /* Intents.framework */,
 				E1F3479374E55E7D94A197EE /* Pods_Seraph.framework */,
 			);
 			name = Frameworks;
@@ -229,6 +233,9 @@
 					D3966A05226CBCBD008776B8 = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 1;
 							};

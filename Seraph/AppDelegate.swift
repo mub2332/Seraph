@@ -19,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseController = DatabaseController()
         return true
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        let tabBarController = window?.rootViewController as! UITabBarController
+        let viewController = tabBarController.viewControllers?.first as! HomeVC
+        viewController.sendSOS()
+        
+        return true
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
