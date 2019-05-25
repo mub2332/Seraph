@@ -123,19 +123,35 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         self.present(contactPicker, animated: true, completion: nil)
     }
     
-    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        let name = contact.givenName + " " + contact.familyName
-        
-        if allContacts.contains(where: { (contact) -> Bool in
-            return contact.name.lowercased() == name.lowercased()
-        }) {
-            picker.displayMessage(title: "Oops!", message: "This contact is already in your contacts list", onCompletion: doNothing)
-            return
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
+        for contact in contacts {
+            let name = contact.givenName + " " + contact.familyName
+            
+            if allContacts.contains(where: { (contact) -> Bool in
+                return contact.name.lowercased() == name.lowercased()
+            }) {
+                picker.displayMessage(title: "Oops!", message: "This contact is already in your contacts list", onCompletion: doNothing)
+                return
+            }
+            
+            self.databaseController?.addContact(name: contact.givenName + " " + contact.familyName,
+                                                phone: ((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as? String)!)
         }
-        
-        self.databaseController?.addContact(name: contact.givenName + " " + contact.familyName,
-                                            phone: ((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as? String)!)
     }
+    
+//    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+//        let name = contact.givenName + " " + contact.familyName
+//        
+//        if allContacts.contains(where: { (contact) -> Bool in
+//            return contact.name.lowercased() == name.lowercased()
+//        }) {
+//            picker.displayMessage(title: "Oops!", message: "This contact is already in your contacts list", onCompletion: doNothing)
+//            return
+//        }
+//        
+//        self.databaseController?.addContact(name: contact.givenName + " " + contact.familyName,
+//                                            phone: ((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as? String)!)
+//    }
     
     func doNothing() {
         return
