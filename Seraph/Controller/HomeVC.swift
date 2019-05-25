@@ -59,7 +59,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     }
     
     @IBAction func sendSOS(_ sender: Any) {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(getLocationAndSendMessage), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(getLocationAndSendMessage), userInfo: nil, repeats: true)
     }
     
     @objc func getLocationAndSendMessage() {
