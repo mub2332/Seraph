@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = window?.rootViewController as! UITabBarController
         
         if userActivity.activityType == "com.example.seraph.SendSOS" {
@@ -33,6 +34,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let viewController = tabBarController.viewControllers![1].children.first as! ContactsListVC
             viewController.importContacts("")
             
+            return true
+        } else if userActivity.activityType == "com.example.seraph.AddContact" {
+            tabBarController.selectedIndex = 1
+            let viewController = tabBarController.viewControllers![1].children.first as! ContactsListVC
+            viewController.addContact("")
+            
+            return true
+        } else if userActivity.activityType == "com.example.seraph.SelectContact" {
+            tabBarController.selectedIndex = 1
+            return true
+        } else if userActivity.activityType == "com.example.seraph.EditSOSMessage" {
+            tabBarController.selectedIndex = 2
+            return true
+        } else if userActivity.activityType == "com.example.seraph.EditShortcuts" {
+            tabBarController.selectedIndex = 3
             return true
         }
         

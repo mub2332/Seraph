@@ -121,6 +121,7 @@
                             <barButtonItem systemItem="add" id="Cfk-tY-IBG">
                                 <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <action selector="addContact:" destination="3Ry-dM-mtS" id="3V9-6g-3np"/>
                                     <segue destination="Zkp-jU-35b" kind="show" identifier="AddContact" id="v5e-pq-lrk"/>
                                 </connections>
                             </barButtonItem>
@@ -140,7 +141,7 @@
         <!--Contact Detail-->
         <scene sceneID="vxL-I5-Re9">
             <objects>
-                <viewController id="Zkp-jU-35b" customClass="ContactDetailVC" customModule="Seraph" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zkp-jU-35b" customClass="ContactDetailVC" customModule="Seraph" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fAS-jH-a4F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -432,7 +433,7 @@
         <image name="voice" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KrZ-bT-VSC"/>
+        <segue reference="v5e-pq-lrk"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

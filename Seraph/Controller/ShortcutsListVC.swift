@@ -14,7 +14,11 @@ class ShortcutsListVC: UITableViewController {
     
     let shortcuts = [
         "Send SOS",
-        "Import Contacts"
+        "Import Contacts",
+        "Add Contact",
+        "Select Contact",
+        "Edit SOS Message",
+        "Edit Shortcuts"
     ]
     
     
@@ -48,10 +52,24 @@ class ShortcutsListVC: UITableViewController {
         
         switch shortcut {
         case "Send SOS":
-            setShortcut(sendSOSActivity(), for: button)
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.SendSOS",
+                                       withTitle: "Send SOS"), for: button)
             break
         case "Import Contacts":
-            setShortcut(importContactsActivity(), for: button)
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.ImportContacts",
+                                       withTitle: "Import Contacts"), for: button)
+            break
+        case "Add Contact":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.AddContact", withTitle: "Add Contact"), for: button)
+            break
+        case "Select Contact":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.SelectContact", withTitle: "Select Contact"), for: button)
+            break
+        case "Edit SOS Message":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.EditSOSMessage", withTitle: "Edit SOS Message"), for: button)
+            break
+        case "Edit Shortcuts":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.EditShortcuts", withTitle: "Edit Shortcuts"), for: button)
             break
         default:
             break
@@ -68,19 +86,10 @@ class ShortcutsListVC: UITableViewController {
         return cell
     }
     
-    func sendSOSActivity() -> NSUserActivity {
-        let activity = NSUserActivity(activityType: "com.example.seraph.SendSOS")
-        activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: "com.example.seraph.SendSOS")
-        activity.title = "Send SOS"
-        activity.isEligibleForSearch = true
-        activity.isEligibleForPrediction = true
-        return activity
-    }
-    
-    func importContactsActivity() -> NSUserActivity {
-        let activity = NSUserActivity(activityType: "com.example.seraph.ImportContacts")
-        activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: "com.example.seraph.ImportContacts")
-        activity.title = "Import Contacts"
+    func createActivity(withIdentifier identifier: String, withTitle title: String) -> NSUserActivity {
+        let activity = NSUserActivity(activityType: identifier)
+        activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: identifier)
+        activity.title = title
         activity.isEligibleForSearch = true
         activity.isEligibleForPrediction = true
         return activity
