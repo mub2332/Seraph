@@ -34,28 +34,9 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
-        let button = INUIAddVoiceShortcutButton(style: .blackOutline)
-        button.shortcut = INShortcut(userActivity: sendSOSActivity())
-        button.delegate = self
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(button)
-        view.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
-        view.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
-        
         // Setup database controller
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
-    }
-    
-    func sendSOSActivity() -> NSUserActivity {
-        let activity = NSUserActivity(activityType: "com.example.seraph.SendSOS")
-        activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: "com.example.seraph.SendSOS")
-        activity.title = "Send SOS"
-        activity.isEligibleForSearch = true
-        activity.isEligibleForPrediction = true
-        return activity
     }
     
     @IBAction func sendSOS(_ sender: Any) {
@@ -93,8 +74,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         spinner.clipsToBounds = true
         spinner.hidesWhenStopped = true
         spinner.style = UIActivityIndicatorView.Style.white;
-        spinner.center.x = view.center.x
-        spinner.center.y = view.center.y + 100
+        spinner.center = view.center
         self.view.addSubview(spinner)
         spinner.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
@@ -181,46 +161,4 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         databaseController?.removeListener(listener: self)
     }
     
-}
-
-extension HomeVC: INUIAddVoiceShortcutButtonDelegate {
-    func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
-        addVoiceShortcutViewController.delegate = self
-        addVoiceShortcutViewController.modalPresentationStyle = .formSheet
-        present(addVoiceShortcutViewController, animated: true, completion: nil)
-    }
-    
-    func present(_ editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
-        editVoiceShortcutViewController.delegate = self
-        editVoiceShortcutViewController.modalPresentationStyle = .formSheet
-        present(editVoiceShortcutViewController, animated: true, completion: nil)
-    }
-    
-    
-}
-
-extension HomeVC: INUIAddVoiceShortcutViewControllerDelegate {
-    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    
-}
-
-extension HomeVC: INUIEditVoiceShortcutViewControllerDelegate {
-    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
 }

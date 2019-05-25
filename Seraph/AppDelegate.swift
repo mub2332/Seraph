@@ -22,10 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
+        let tabBarController = window?.rootViewController as! UITabBarController
+        
         if userActivity.activityType == "com.example.seraph.SendSOS" {
-            let tabBarController = window?.rootViewController as! UITabBarController
             let viewController = tabBarController.viewControllers?.first as! HomeVC
             viewController.sendSOS("")
+            
+            return true
+        } else if userActivity.activityType == "com.example.seraph.ImportContacts" {
+            let viewController = tabBarController.viewControllers![1].children.first as! ContactsListVC
+            viewController.importContacts("")
             
             return true
         }
