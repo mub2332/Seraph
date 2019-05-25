@@ -232,7 +232,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="IBc-CN-xkc">
             <objects>
-                <tabBarController id="H20-ZL-kIk" sceneMemberID="viewController">
+                <tabBarController modalTransitionStyle="flipHorizontal" id="H20-ZL-kIk" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="5l9-BC-FdQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

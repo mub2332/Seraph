@@ -24,6 +24,7 @@
 		D33D70D4227E83B200FBA31F /* TintedClearButtonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70D3227E83B200FBA31F /* TintedClearButtonTextField.swift */; };
 		D33D70DA227F0ED600FBA31F /* RedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70D9227F0ED600FBA31F /* RedBorderButton.swift */; };
 		D38B5D982299570200789375 /* ShortcutsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B5D972299570200789375 /* ShortcutsListVC.swift */; };
+		D38B5DA0229986F200789375 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B5D9F229986F200789375 /* UITabBarController+Extension.swift */; };
 		D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3966A09226CBCBD008776B8 /* AppDelegate.swift */; };
 		D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A0D226CBCBD008776B8 /* Main.storyboard */; };
 		D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3966A10226CBCBF008776B8 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		D33D70D3227E83B200FBA31F /* TintedClearButtonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintedClearButtonTextField.swift; sourceTree = "<group>"; };
 		D33D70D9227F0ED600FBA31F /* RedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBorderButton.swift; sourceTree = "<group>"; };
 		D38B5D972299570200789375 /* ShortcutsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsListVC.swift; sourceTree = "<group>"; };
+		D38B5D9F229986F200789375 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		D3966A06226CBCBD008776B8 /* Seraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3966A09226CBCBD008776B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3966A0E226CBCBD008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				D33D70BD227D6C0300FBA31F /* UIViewController+Extension.swift */,
 				D33D70BF227D6D4400FBA31F /* String+Extension.swift */,
 				D333BD43229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift */,
+				D38B5D9F229986F200789375 /* UITabBarController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				D333BD44229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift in Sources */,
 				D33D70B3227C84F300FBA31F /* DatabaseController.swift in Sources */,
 				D38B5D982299570200789375 /* ShortcutsListVC.swift in Sources */,
+				D38B5DA0229986F200789375 /* UITabBarController+Extension.swift in Sources */,
 				D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */,
 				D33D70AA227C7E9B00FBA31F /* ContactsListVC.swift in Sources */,
 				D33D70B7227D0CDA00FBA31F /* DatabaseProtocol.swift in Sources */,
