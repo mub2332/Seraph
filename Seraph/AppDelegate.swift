@@ -22,11 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
-        let tabBarController = window?.rootViewController as! UITabBarController
-        let viewController = tabBarController.viewControllers?.first as! HomeVC
-        viewController.getLocationAndSendMessage()
+        if userActivity.activityType == "com.example.seraph.SendSOS" {
+            let tabBarController = window?.rootViewController as! UITabBarController
+            let viewController = tabBarController.viewControllers?.first as! HomeVC
+            viewController.sendSOS("")
+            
+            return true
+        }
         
-        return true
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

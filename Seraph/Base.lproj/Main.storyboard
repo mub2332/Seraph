@@ -42,8 +42,8 @@
                                     <constraint firstAttribute="height" constant="100" id="RUH-Hu-4G5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safety is just a click away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuY-S2-hjO">
-                                <rect key="frame" x="63" y="278" width="194" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Add Siri to record voice shortcut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuY-S2-hjO">
+                                <rect key="frame" x="20.5" y="278" width="279" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -66,10 +66,13 @@
                         <viewLayoutGuide key="safeArea" id="cgg-n4-tK7"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="bId-vO-EmB"/>
+                    <connections>
+                        <outlet property="sosButton" destination="MRH-Lz-wQe" id="VJ3-XI-Urp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aje-f0-yaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1176" y="-14"/>
+            <point key="canvasLocation" x="-180" y="-14.788732394366198"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="S73-KA-vs5">
@@ -269,10 +272,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ElE-bO-Hf8">
-                                <rect key="frame" x="16" y="133" width="288" height="250"/>
+                                <rect key="frame" x="16" y="133" width="288" height="120"/>
                                 <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="wAO-vD-hQv"/>
+                                    <constraint firstAttribute="height" constant="120" id="wAO-vD-hQv"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

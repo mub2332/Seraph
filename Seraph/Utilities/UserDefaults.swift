@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Intents
 
 let userDefault = UserDefaults.standard
 
@@ -20,4 +21,16 @@ func readStringData(forKey key: String) -> String {
     } else {
         return userDefault.string(forKey: key)!
     }
+}
+
+func readUUID(forKey key: String) -> Any {
+    if userDefault.object(forKey: key) == nil {
+        return UUID(uuidString: "")
+    } else {
+        return userDefault.object(forKey: key)
+    }
+}
+
+func removeData(forKey key: String) {
+    userDefault.removeObject(forKey: key)
 }

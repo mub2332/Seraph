@@ -47,7 +47,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         if let searchText = searchController.searchBar.text?.lowercased(),
             searchText.count > 0 {
             filteredContacts = allContacts.filter({(contact: Contact) -> Bool in
-                return (contact.name.lowercased().contains(searchText))
+                return (contact.name.lowercased().starts(with: searchText))
             })
         } else {
             filteredContacts = allContacts
