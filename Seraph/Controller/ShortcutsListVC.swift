@@ -17,6 +17,7 @@ class ShortcutsListVC: UITableViewController {
         "Import Contacts",
         "Add Contact",
         "Select Contact",
+        "Delete All Contacts",
         "Edit SOS Message",
         "Edit Shortcuts"
     ]
@@ -64,6 +65,9 @@ class ShortcutsListVC: UITableViewController {
             break
         case "Select Contact":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.SelectContact", withTitle: "Select Contact"), for: button)
+            break
+        case "Delete All Contacts":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.DeleteAllContacts", withTitle: "Delete All Contacts"), for: button)
             break
         case "Edit SOS Message":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.EditSOSMessage", withTitle: "Edit SOS Message"), for: button)

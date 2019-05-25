@@ -57,20 +57,19 @@ class SOSMessageVC: UIViewController {
     
     @IBAction func save(_ sender: Any) {
         writeData(forKey: "SOS Message", withValue: messageTextField.text)
-        self.displayMessage(title: "Success!", message: "Message has been saved!", onCompletion: reset)
+        self.displayMessage(title: "Success!", message: "Message has been saved!", onCompletion: cancelEdit)
     }
     
     @IBAction func cancel(_ sender: Any) {
-        reset()
+        cancelEdit()
     }
     
     @IBAction func clear(_ sender: Any) {
         messageTextField.text = ""
     }
     
-    func reset() {
-        tabBarController?.selectedIndex = 0
-        return
+    func cancelEdit() {
+        messageTextField.resignFirstResponder()
     }
     
     /*
