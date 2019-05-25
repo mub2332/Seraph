@@ -23,14 +23,6 @@ func readStringData(forKey key: String) -> String {
     }
 }
 
-func readUUID(forKey key: String) -> Any {
-    if userDefault.object(forKey: key) == nil {
-        return UUID(uuidString: "")
-    } else {
-        return userDefault.object(forKey: key)
-    }
-}
-
 func removeData(forKey key: String) {
     userDefault.removeObject(forKey: key)
 }

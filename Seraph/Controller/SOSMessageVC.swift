@@ -11,6 +11,8 @@ import UIKit
 class SOSMessageVC: UIViewController {
     
     @IBOutlet weak var messageTextField: UITextView!
+    @IBOutlet weak var clearButton: OrangeBorderButton!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +20,39 @@ class SOSMessageVC: UIViewController {
         // Do any additional setup after loading the view.
         messageTextField.text = readStringData(forKey: "SOS Message")
         self.hideKeyboardWhenTappedAround()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         messageTextField.text = readStringData(forKey: "SOS Message")
         messageTextField.becomeFirstResponder()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func handleKeyboardNotification(_ notification: Notification) {
+        
+        if let userInfo = notification.userInfo {
+            
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+            
+            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+            
+            bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height - 16 : 32
+            
+            UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            })
+        }
+        
     }
     
     @IBAction func save(_ sender: Any) {

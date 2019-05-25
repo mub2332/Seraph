@@ -187,7 +187,7 @@
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="MkZ-42-hPA" secondAttribute="trailing" constant="16" id="mrP-Ad-8lA"/>
                             <constraint firstItem="rPo-ZE-tKF" firstAttribute="top" secondItem="S6B-y1-Jhx" secondAttribute="bottom" constant="16" id="mxK-wx-ziR"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="6wP-cV-hvM" secondAttribute="trailing" constant="32" id="nAi-2Y-J7g"/>
-                            <constraint firstItem="uK5-5g-gqf" firstAttribute="bottom" secondItem="6wP-cV-hvM" secondAttribute="bottom" constant="32" id="zeN-8S-cwW"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="6wP-cV-hvM" secondAttribute="bottom" constant="32" id="zeN-8S-cwW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uK5-5g-gqf"/>
                     </view>
@@ -206,6 +206,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomConstraint" destination="zeN-8S-cwW" id="Ipa-sV-xif"/>
                         <outlet property="nameTextField" destination="O5n-NO-gB6" id="MYl-ns-U3J"/>
                         <outlet property="phoneTextField" destination="rPo-ZE-tKF" id="dk5-E0-SJT"/>
                     </connections>
@@ -298,7 +299,7 @@
                         <constraints>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="ElE-bO-Hf8" secondAttribute="trailing" constant="16" id="2SK-4p-oM2"/>
                             <constraint firstItem="ElE-bO-Hf8" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="16" id="GQ9-AD-61d"/>
-                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="bottom" secondItem="fb5-Il-zEK" secondAttribute="bottom" constant="32" id="Gpj-Av-myi"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fb5-Il-zEK" secondAttribute="bottom" constant="32" id="Gpj-Av-myi"/>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="fb5-Il-zEK" secondAttribute="trailing" constant="32" id="QMf-44-zgI"/>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="oDS-qy-BCE" secondAttribute="trailing" constant="16" id="cNa-po-tAO"/>
                             <constraint firstItem="ElE-bO-Hf8" firstAttribute="top" secondItem="oDS-qy-BCE" secondAttribute="bottom" constant="16" id="p9y-mW-DeK"/>
@@ -322,6 +323,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomConstraint" destination="Gpj-Av-myi" id="edY-BG-wR8"/>
+                        <outlet property="clearButton" destination="fb5-Il-zEK" id="jtW-9r-aAW"/>
                         <outlet property="messageTextField" destination="ElE-bO-Hf8" id="6AP-Tl-o8K"/>
                     </connections>
                 </viewController>
