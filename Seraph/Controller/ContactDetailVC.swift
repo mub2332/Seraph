@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactDetailVC : UIViewController {
+class ContactDetailVC : UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -21,6 +21,11 @@ class ContactDetailVC : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameTextField.delegate = self
+        phoneTextField.delegate = self
+        nameTextField.tag = 100
+        phoneTextField.tag = 101
         
         // Setup database controller
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -57,6 +62,18 @@ class ContactDetailVC : UIViewController {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameTextField.becomeFirstResponder()
@@ -79,12 +96,12 @@ class ContactDetailVC : UIViewController {
         phoneTextField.text = phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if nameTextField.text == "" || phoneTextField.text == "" {
-            self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number", onCompletion: returnNil)
+            self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number", onCompletion: doNothing)
             return
         }
         
         if !PhoneValidator.isPhone(phoneTextField.text!) {
-            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", onCompletion: returnNil)
+            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", onCompletion: doNothing)
             return
         }
         
@@ -94,7 +111,7 @@ class ContactDetailVC : UIViewController {
         if allContacts.contains(where: {contact in
             return contact.name.lowercased() == name.lowercased()
         }) {
-            self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", onCompletion: returnNil)
+            self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", onCompletion: doNothing)
             return
         }
         
@@ -109,7 +126,7 @@ class ContactDetailVC : UIViewController {
         }
     }
     
-    func returnNil() {
+    func doNothing() {
         return
     }
     

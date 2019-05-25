@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import Contacts
+import ContactsUI
 
-class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseListener {
+class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseListener, CNContactPickerDelegate {
     
     let bgColorView = UIView()
     
     var filteredContacts = [Contact]()
     var allContacts = [Contact]()
+    
+    private let contactPicker = CNContactPickerViewController()
     
     weak var databaseController: DatabaseProtocol?
     
@@ -112,6 +116,29 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
+    }
+    
+    @IBAction func importContacts(_ sender: Any) {
+        contactPicker.delegate = self
+        self.present(contactPicker, animated: true, completion: nil)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        let name = contact.givenName + " " + contact.familyName
+        
+        if allContacts.contains(where: { (contact) -> Bool in
+            return contact.name.lowercased() == name.lowercased()
+        }) {
+            picker.displayMessage(title: "Oops!", message: "This contact is already in your contacts list", onCompletion: doNothing)
+            return
+        }
+        
+        self.databaseController?.addContact(name: contact.givenName + " " + contact.familyName,
+                                            phone: ((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as? String)!)
+    }
+    
+    func doNothing() {
+        return
     }
     
     // MARK:- Navigation

@@ -112,6 +112,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="2nE-Nu-CcF">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="hZq-uG-zn4">
+                            <connections>
+                                <action selector="importContacts:" destination="3Ry-dM-mtS" id="sp1-9r-SxZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cfk-tY-IBG">
                             <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -295,7 +300,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.12939649820327759" green="0.12942153215408325" blue="0.12939104437828064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="ElE-bO-Hf8" secondAttribute="trailing" constant="16" id="2SK-4p-oM2"/>
                             <constraint firstItem="ElE-bO-Hf8" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="16" id="GQ9-AD-61d"/>
