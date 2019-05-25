@@ -117,12 +117,20 @@
                                 <action selector="importContacts:" destination="3Ry-dM-mtS" id="sp1-9r-SxZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cfk-tY-IBG">
-                            <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="Zkp-jU-35b" kind="show" identifier="AddContact" id="v5e-pq-lrk"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Cfk-tY-IBG">
+                                <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="Zkp-jU-35b" kind="show" identifier="AddContact" id="v5e-pq-lrk"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="qg3-2t-e5s">
+                                <color key="tintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="deleteAllContacts:" destination="3Ry-dM-mtS" id="Izq-Pk-eIB"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0W0-3N-QGY" userLabel="First Responder" sceneMemberID="firstResponder"/>

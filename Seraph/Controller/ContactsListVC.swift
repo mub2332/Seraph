@@ -118,6 +118,15 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         databaseController?.removeListener(listener: self)
     }
     
+    @IBAction func deleteAllContacts(_ sender: Any) {
+        self.displayMessage(title: "Confirm", message: "Are you sure you want to delete all contacts?", onCompletion: deleteContacts)
+    }
+    
+    func deleteContacts() {
+        self.databaseController?.deleteAllContacts()
+        return
+    }
+    
     @IBAction func importContacts(_ sender: Any) {
         contactPicker.delegate = self
         self.present(contactPicker, animated: true, completion: nil)
@@ -141,14 +150,14 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     
 //    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
 //        let name = contact.givenName + " " + contact.familyName
-//        
+//
 //        if allContacts.contains(where: { (contact) -> Bool in
 //            return contact.name.lowercased() == name.lowercased()
 //        }) {
 //            picker.displayMessage(title: "Oops!", message: "This contact is already in your contacts list", onCompletion: doNothing)
 //            return
 //        }
-//        
+//
 //        self.databaseController?.addContact(name: contact.givenName + " " + contact.familyName,
 //                                            phone: ((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as? String)!)
 //    }

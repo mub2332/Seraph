@@ -27,6 +27,7 @@ protocol DatabaseListener: AnyObject {
 protocol DatabaseProtocol: AnyObject {
     func addContact(name: String, phone: String) -> Contact
     func deleteContact(contact: Contact)
+    func deleteAllContacts()
     func editContact(contact: Contact, name: String, phone: String)
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)

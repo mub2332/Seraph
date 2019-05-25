@@ -56,6 +56,14 @@ class DatabaseController: NSObject, DatabaseProtocol, NSFetchedResultsController
         saveContext()
     }
     
+    func deleteAllContacts() {
+        let contacts = fetchAllContacts()
+        for contact in contacts {
+            persistantContainer.viewContext.delete(contact)
+        }
+        saveContext()
+    }
+    
     func fetchAllContacts() -> [Contact] {
         if allContactsFetchedResultsController == nil {
             let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()

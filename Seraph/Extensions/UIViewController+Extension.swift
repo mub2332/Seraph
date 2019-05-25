@@ -38,6 +38,10 @@ extension UIViewController {
                                       handler: { (_) in
             onCompletion()
         }))
+        alert.addAction(UIAlertAction(title: "Cancel",
+                                      style: UIAlertAction.Style.destructive,
+                                      handler: nil)
+        )
         
         self.present(alert, animated: true, completion: nil)
     }
