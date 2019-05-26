@@ -26,6 +26,21 @@
 	<string>This app needs to access your current location to send to your contacts</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs to access your current location to send to your contacts</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>apilayer.net</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>com.example.seraph.EditShortcuts</string>

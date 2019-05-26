@@ -17,10 +17,19 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
     var contactToEdit: Contact?
     var allContacts = [Contact]()
     
+    let API_KEY = "360584e4d1daf51d07915c2f3ddd2984"
+    var url = "http://apilayer.net/api/validate?access_key="
+    
+    struct Phone: Decodable {
+        let valid: Bool
+    }
+    
     weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        url += API_KEY + "&number="
         
         nameTextField.delegate = self
         phoneTextField.delegate = self
@@ -100,30 +109,70 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
             return
         }
         
-        if !PhoneValidator.isPhone(phoneTextField.text!) {
-            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", onCompletion: doNothing)
-            return
-        }
-        
         let name = nameTextField.text!
         let phone = phoneTextField.text!
         
-        if allContacts.contains(where: {contact in
+        if self.allContacts.contains(where: {contact in
             return contact.name.lowercased() == name.lowercased()
         }) {
-            self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", onCompletion: doNothing)
+            self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", onCompletion: self.doNothing)
             return
         }
         
-        if let contact = contactToEdit {
-            let _ = databaseController?.editContact(contact: contact, name: name, phone: phone)
-            self.displayMessage(title: "Success!", message: "Contact has been updated!",
-                                onCompletion: popViewController)
+        if phone.starts(with: "+") {
+            var request = URLRequest(url: URL(string: url + phoneTextField.text!)!)
+            request.httpMethod = "GET"
+            
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                do {
+                    let phoneObject = try JSONDecoder().decode(Phone.self, from: data!)
+                    
+                    DispatchQueue.main.async {
+                        if !phoneObject.valid {
+                            self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid phone number", onCompletion: self.doNothing)
+                            return
+                        }
+                        
+                        if let contact = self.contactToEdit {
+                            let _ = self.databaseController?.editContact(contact: contact, name: name, phone: phone)
+                            self.displayMessage(title: "Success!", message: "Contact has been updated!",
+                                                onCompletion: self.popViewController)
+                        } else {
+                            let _ = self.databaseController?.addContact(name: name, phone: phone)
+                            self.displayMessage(title: "Success!", message: "Contact has been added!",
+                                                onCompletion: self.popViewController)
+                        }
+                    }
+                    
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                    
+                    DispatchQueue.main.async {
+                        self.displayMessage(title: "Oops!", message: "Phone number validation didn't work", onCompletion: self.doNothing)
+                        return
+                    }
+                    
+                }
+                
+                }.resume()
         } else {
-            let _ = databaseController?.addContact(name: name, phone: phone)
-            self.displayMessage(title: "Success!", message: "Contact has been added!",
-                                onCompletion: popViewController)
+            if !PhoneValidator.isPhone(phoneTextField.text!) {
+                self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", onCompletion: doNothing)
+                return
+            }
+            
+            if let contact = self.contactToEdit {
+                let _ = self.databaseController?.editContact(contact: contact, name: name, phone: phone)
+                self.displayMessage(title: "Success!", message: "Contact has been updated!",
+                                    onCompletion: self.popViewController)
+            } else {
+                let _ = self.databaseController?.addContact(name: name, phone: phone)
+                self.displayMessage(title: "Success!", message: "Contact has been added!",
+                                    onCompletion: self.popViewController)
+            }
         }
+        
     }
     
     func doNothing() {
