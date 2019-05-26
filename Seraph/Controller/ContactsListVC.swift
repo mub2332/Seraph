@@ -147,7 +147,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
                 return
             }
             
-            self.databaseController?.addContact(name: contact.givenName + " " + contact.familyName,
+            self.databaseController?.addContact(name: contact.givenName,
                                                 phone: ((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as? String)!)
         }
     }
