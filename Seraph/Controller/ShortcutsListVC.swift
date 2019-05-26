@@ -23,7 +23,6 @@ class ShortcutsListVC: UITableViewController {
         "Edit Shortcuts"
     ]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

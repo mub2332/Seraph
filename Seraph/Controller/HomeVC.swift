@@ -44,13 +44,15 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     }
     
     @IBAction func makeEmergencyCall(_ sender: Any) {
-        let index = contactsList.firstIndex { (contact) -> Bool in
-            return contact.name.lowercased().trimTrailingWhitespace() == "meherwan"
-            }!
-        
-        let phoneNumber = contactsList[index].phone
-        phoneNumber.makeACall()
+        if let url = URL(string: "tel://112"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
+    
     @objc func getLocationAndSendMessage() {
         let messageVC = MFMessageComposeViewController()
 

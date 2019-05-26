@@ -28,6 +28,13 @@
 	<string>This app needs to access your current location to send to your contacts</string>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>com.example.seraph.EditShortcuts</string>
+		<string>com.example.seraph.EditSOSMessage</string>
+		<string>com.example.seraph.DeleteAllContacts</string>
+		<string>com.example.seraph.SelectContact</string>
+		<string>com.example.seraph.AddContact</string>
+		<string>com.example.seraph.ImportContacts</string>
+		<string>com.example.seraph.MakeEmergencyCall</string>
 		<string>com.example.seraph.SendSOS</string>
 	</array>
 	<key>UIBackgroundModes</key>
