@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let viewController = tabBarController.viewControllers?.first as! HomeVC
             viewController.sendSOS("")
             return true
+        }else if userActivity.activityType == "com.example.seraph.MakeEmergencyCall" {
+            tabBarController.selectedIndex = 0
+            let viewController = tabBarController.viewControllers?.first as! HomeVC
+            viewController.makeEmergencyCall("")
+            return true
         } else if userActivity.activityType == "com.example.seraph.ImportContacts" {
             tabBarController.selectedIndex = 1
             let viewController = tabBarController.viewControllers![1].children.first as! ContactsListVC

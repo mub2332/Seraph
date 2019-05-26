@@ -32,11 +32,11 @@ extension String {
     }
     
     func onlyDigits() -> String {
-        let filtredUnicodeScalars = unicodeScalars.filter{CharacterSet.decimalDigits.contains($0)}
-        return String(String.UnicodeScalarView(filtredUnicodeScalars))
+        let filteredUnicodeScalars = unicodeScalars.filter{CharacterSet.decimalDigits.contains($0)}
+        return String(String.UnicodeScalarView(filteredUnicodeScalars))
     }
     
-    func makeAColl() {
+    func makeACall() {
         if isValid(regex: .phone) {
             if let url = URL(string: "tel://\(self.onlyDigits())"), UIApplication.shared.canOpenURL(url) {
                 if #available(iOS 10, *) {

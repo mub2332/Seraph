@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRH-Lz-wQe" customClass="RedBorderButton" customModule="Seraph" customModuleProvider="target">
-                                <rect key="frame" x="32" y="437" width="256" height="50"/>
+                                <rect key="frame" x="32" y="371" width="256" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VzA-3W-Xic"/>
                                 </constraints>
@@ -48,17 +48,32 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ok-6X-2Ks" customClass="RedBorderButton" customModule="Seraph" customModuleProvider="target">
+                                <rect key="frame" x="32" y="437" width="256" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="s6D-SD-7tu"/>
+                                </constraints>
+                                <state key="normal" title="Make Emergency Call">
+                                    <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeEmergencyCall:" destination="QcR-J9-m1y" eventType="touchUpInside" id="QRU-ki-mtw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MRH-Lz-wQe" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="32" id="13s-ID-Iup"/>
-                            <constraint firstItem="cgg-n4-tK7" firstAttribute="bottom" secondItem="MRH-Lz-wQe" secondAttribute="bottom" constant="32" id="29V-l9-Yn3"/>
+                            <constraint firstItem="cgg-n4-tK7" firstAttribute="trailing" secondItem="9ok-6X-2Ks" secondAttribute="trailing" constant="32" id="9Wf-mp-0mV"/>
                             <constraint firstItem="QuY-S2-hjO" firstAttribute="centerX" secondItem="bcf-84-86g" secondAttribute="centerX" id="DkT-Kx-mdE"/>
                             <constraint firstItem="nS2-qk-80A" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="100" id="IbO-rS-kUr"/>
+                            <constraint firstItem="9ok-6X-2Ks" firstAttribute="top" secondItem="MRH-Lz-wQe" secondAttribute="bottom" constant="16" id="KYC-d0-PXk"/>
                             <constraint firstItem="b8h-Ba-J9R" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="16" id="KrQ-bz-GNE"/>
                             <constraint firstItem="b8h-Ba-J9R" firstAttribute="top" secondItem="cgg-n4-tK7" secondAttribute="top" constant="32" id="QJ9-SF-K5d"/>
                             <constraint firstItem="cgg-n4-tK7" firstAttribute="trailing" secondItem="b8h-Ba-J9R" secondAttribute="trailing" constant="16" id="X73-sT-eFa"/>
+                            <constraint firstItem="cgg-n4-tK7" firstAttribute="bottom" secondItem="9ok-6X-2Ks" secondAttribute="bottom" constant="32" id="ciG-aK-ZKH"/>
                             <constraint firstItem="QuY-S2-hjO" firstAttribute="top" secondItem="nS2-qk-80A" secondAttribute="bottom" constant="32" id="ggW-c4-9gg"/>
+                            <constraint firstItem="9ok-6X-2Ks" firstAttribute="leading" secondItem="cgg-n4-tK7" secondAttribute="leading" constant="32" id="u0o-3a-RcU"/>
                             <constraint firstItem="cgg-n4-tK7" firstAttribute="trailing" secondItem="MRH-Lz-wQe" secondAttribute="trailing" constant="32" id="x0W-uo-Sjb"/>
                             <constraint firstItem="nS2-qk-80A" firstAttribute="top" secondItem="b8h-Ba-J9R" secondAttribute="bottom" constant="16" id="xnT-Jm-Qj5"/>
                             <constraint firstItem="cgg-n4-tK7" firstAttribute="trailing" secondItem="nS2-qk-80A" secondAttribute="trailing" constant="100" id="zCg-7l-ags"/>

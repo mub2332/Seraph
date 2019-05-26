@@ -14,6 +14,7 @@ class ShortcutsListVC: UITableViewController {
     
     let shortcuts = [
         "Send SOS",
+        "Make Emergency Call",
         "Import Contacts",
         "Add Contact",
         "Select Contact",
@@ -55,6 +56,10 @@ class ShortcutsListVC: UITableViewController {
         case "Send SOS":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.SendSOS",
                                        withTitle: "Send SOS"), for: button)
+            break
+        case "Make Emergency Call":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.MakeEmergencyCall",
+                                       withTitle: "Make Emergency Call"), for: button)
             break
         case "Import Contacts":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.ImportContacts",

@@ -33,6 +33,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
+		<string>voip</string>
 	</array>
 	<key>UILaunchImageFile</key>
 	<string>LaunchImage</string>

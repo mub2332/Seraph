@@ -43,6 +43,14 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(getLocationAndSendMessage), userInfo: nil, repeats: true)
     }
     
+    @IBAction func makeEmergencyCall(_ sender: Any) {
+        let index = contactsList.firstIndex { (contact) -> Bool in
+            return contact.name.lowercased().trimTrailingWhitespace() == "meherwan"
+            }!
+        
+        let phoneNumber = contactsList[index].phone
+        phoneNumber.makeACall()
+    }
     @objc func getLocationAndSendMessage() {
         let messageVC = MFMessageComposeViewController()
 
