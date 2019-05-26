@@ -340,10 +340,10 @@
                         <viewLayoutGuide key="safeArea" id="uS1-DH-Cjf"/>
                     </view>
                     <navigationItem key="navigationItem" title="SOS Message" id="hzS-6j-Chz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="O7N-oB-7P0">
-                            <color key="tintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="undo" id="O7N-oB-7P0">
+                            <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                             <connections>
-                                <action selector="cancel:" destination="ecc-iY-2R2" id="eH1-FS-QSf"/>
+                                <action selector="undo:" destination="ecc-iY-2R2" id="z75-XO-Kp0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="IdM-BH-I8f">
