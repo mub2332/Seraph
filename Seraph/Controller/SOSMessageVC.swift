@@ -22,7 +22,7 @@ class SOSMessageVC: UIViewController {
 
         // Do any additional setup after loading the view.
         messageHeader.textColor = UIColor.lightGray
-        messageTextField.textColor = UIColor.white
+        messageTextField.textColor = UIColor.lightGray
         messageTextField.text = readStringData(forKey: "SOS Message")
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)

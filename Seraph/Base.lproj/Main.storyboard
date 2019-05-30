@@ -163,32 +163,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkZ-42-hPA">
-                                <rect key="frame" x="16" y="96" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="O5n-NO-gB6" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
-                                <rect key="frame" x="16" y="133" width="288" height="30"/>
-                                <color key="backgroundColor" red="0.10980392156862745" green="0.10980392160000001" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6B-y1-Jhx">
-                                <rect key="frame" x="16" y="179" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="rPo-ZE-tKF" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
-                                <rect key="frame" x="16" y="216" width="288" height="30"/>
-                                <color key="backgroundColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wP-cV-hvM" customClass="OrangeBorderButton" customModule="Seraph" customModuleProvider="target">
                                 <rect key="frame" x="32" y="437" width="256" height="50"/>
                                 <constraints>
@@ -201,23 +175,61 @@
                                     <action selector="clearAll:" destination="Zkp-jU-35b" eventType="touchUpInside" id="pBq-rj-Dhx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptn-GS-bLe">
+                                <rect key="frame" x="0.0" y="96" width="320" height="35"/>
+                                <color key="backgroundColor" red="0.043137254899999998" green="0.043137254899999998" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="vkY-Lv-92Q"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="CONTACT DETAILS">
+                                        <attributes>
+                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="10" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2a-pa-6jr" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
+                                <rect key="frame" x="16" y="147" width="288" height="30"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-GU-HTf" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
+                                <rect key="frame" x="16" y="193" width="288" height="30"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXG-hA-SN1">
+                                <rect key="frame" x="0.0" y="239" width="320" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.75" id="HmK-EM-JOW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="O5n-NO-gB6" firstAttribute="top" secondItem="MkZ-42-hPA" secondAttribute="bottom" constant="16" id="0bt-AS-8LB"/>
-                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="O5n-NO-gB6" secondAttribute="trailing" constant="16" id="53U-OU-0Ju"/>
-                            <constraint firstItem="O5n-NO-gB6" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="DjY-Is-Apr"/>
-                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="S6B-y1-Jhx" secondAttribute="trailing" constant="16" id="DtS-MC-4VC"/>
-                            <constraint firstItem="rPo-ZE-tKF" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="I1b-O7-Yud"/>
-                            <constraint firstItem="MkZ-42-hPA" firstAttribute="top" secondItem="uK5-5g-gqf" secondAttribute="top" constant="32" id="OPr-fV-p88"/>
+                            <constraint firstItem="U2a-pa-6jr" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="2Zz-kZ-TOk"/>
+                            <constraint firstItem="Aow-GU-HTf" firstAttribute="top" secondItem="U2a-pa-6jr" secondAttribute="bottom" constant="16" id="5vU-EO-Veq"/>
+                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="mXG-hA-SN1" secondAttribute="trailing" id="AOT-EW-q9V"/>
+                            <constraint firstItem="U2a-pa-6jr" firstAttribute="top" secondItem="Ptn-GS-bLe" secondAttribute="bottom" constant="16" id="BIl-oR-byg"/>
+                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="Aow-GU-HTf" secondAttribute="trailing" constant="16" id="Bcs-Vp-HAF"/>
+                            <constraint firstItem="mXG-hA-SN1" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" id="Bls-Br-NRw"/>
+                            <constraint firstItem="Ptn-GS-bLe" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" id="KUS-EN-xZD"/>
                             <constraint firstItem="6wP-cV-hvM" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="32" id="RqH-sU-bIs"/>
-                            <constraint firstItem="S6B-y1-Jhx" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="YQw-g4-b2N"/>
-                            <constraint firstItem="MkZ-42-hPA" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="eYO-66-glX"/>
-                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="rPo-ZE-tKF" secondAttribute="trailing" constant="16" id="f6p-XU-6EA"/>
-                            <constraint firstItem="S6B-y1-Jhx" firstAttribute="top" secondItem="O5n-NO-gB6" secondAttribute="bottom" constant="16" id="irp-4A-SwC"/>
-                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="MkZ-42-hPA" secondAttribute="trailing" constant="16" id="mrP-Ad-8lA"/>
-                            <constraint firstItem="rPo-ZE-tKF" firstAttribute="top" secondItem="S6B-y1-Jhx" secondAttribute="bottom" constant="16" id="mxK-wx-ziR"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="6wP-cV-hvM" secondAttribute="trailing" constant="32" id="nAi-2Y-J7g"/>
+                            <constraint firstItem="Ptn-GS-bLe" firstAttribute="top" secondItem="uK5-5g-gqf" secondAttribute="top" constant="32" id="quK-r7-xZA"/>
+                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="U2a-pa-6jr" secondAttribute="trailing" constant="16" id="sZ5-c7-QQx"/>
+                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="Ptn-GS-bLe" secondAttribute="trailing" id="tpN-xE-sYQ"/>
+                            <constraint firstItem="Aow-GU-HTf" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="v6G-u8-gfA"/>
+                            <constraint firstItem="mXG-hA-SN1" firstAttribute="top" secondItem="Aow-GU-HTf" secondAttribute="bottom" constant="16" id="ys2-Lt-DPd"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6wP-cV-hvM" secondAttribute="bottom" constant="32" id="zeN-8S-cwW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uK5-5g-gqf"/>
@@ -238,8 +250,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="zeN-8S-cwW" id="Ipa-sV-xif"/>
-                        <outlet property="nameTextField" destination="O5n-NO-gB6" id="MYl-ns-U3J"/>
-                        <outlet property="phoneTextField" destination="rPo-ZE-tKF" id="dk5-E0-SJT"/>
+                        <outlet property="nameTextField" destination="U2a-pa-6jr" id="4Na-d2-eBc"/>
+                        <outlet property="phoneTextField" destination="Aow-GU-HTf" id="k4y-nH-nI4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpw-YY-KaT" userLabel="First Responder" sceneMemberID="firstResponder"/>

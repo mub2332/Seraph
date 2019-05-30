@@ -10,6 +10,7 @@ import UIKit
 
 class ContactDetailVC : UIViewController, UITextFieldDelegate {
     
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -35,6 +36,11 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
         phoneTextField.delegate = self
         nameTextField.tag = 100
         phoneTextField.tag = 101
+        
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter name",
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: "Enter phone number",
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         // Setup database controller
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
