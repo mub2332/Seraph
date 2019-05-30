@@ -10,6 +10,7 @@ import UIKit
 
 class SOSMessageVC: UIViewController {
     
+    @IBOutlet weak var messageHeader: UILabel!
     @IBOutlet weak var messageTextField: UITextView!
     @IBOutlet weak var clearButton: OrangeBorderButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -18,8 +19,9 @@ class SOSMessageVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        messageHeader.textColor = UIColor.lightGray
+        messageTextField.textColor = UIColor.white
         messageTextField.text = readStringData(forKey: "SOS Message")
-        self.hideKeyboardWhenTappedAround()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -72,6 +74,9 @@ class SOSMessageVC: UIViewController {
         messageTextField.text = readStringData(forKey: "SOS Message")
     }
     
+    @IBAction func tapView(_ sender: Any) {
+        self.view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 
