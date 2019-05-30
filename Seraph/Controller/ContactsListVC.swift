@@ -37,6 +37,8 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.red], for: .normal)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.prefersLargeTitles = true
+
         
         definesPresentationContext = true
         
@@ -109,7 +111,8 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
+
         filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
     }
     
