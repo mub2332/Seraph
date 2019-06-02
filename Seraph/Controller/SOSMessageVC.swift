@@ -72,7 +72,6 @@ class SOSMessageVC: UIViewController {
     }
     
     func undoEdit() {
-        messageTextField.resignFirstResponder()
         messageTextField.text = readStringData(forKey: "SOS Message")
     }
     

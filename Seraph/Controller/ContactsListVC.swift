@@ -135,6 +135,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
             self.deleteContact(contact: self.sections[indexPath.section].contacts[indexPath.row])
         })
         
+        deleteAction.image = UIImage(named: "delete")
         deleteAction.backgroundColor = .red
         let config = UISwipeActionsConfiguration(actions: [deleteAction])
         return config
@@ -215,7 +216,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
             let controller = segue.destination as! ContactDetailVC
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.contactToEdit = filteredContacts[indexPath.row]
+                controller.contactToEdit = sections[indexPath.section].contacts[indexPath.row]
             }
         }
         

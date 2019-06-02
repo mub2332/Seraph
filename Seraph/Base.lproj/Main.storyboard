@@ -160,7 +160,7 @@
         <scene sceneID="vxL-I5-Re9">
             <objects>
                 <viewController storyboardIdentifier="ContactDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zkp-jU-35b" customClass="ContactDetailVC" customModule="Seraph" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fAS-jH-a4F">
+                    <view key="view" contentMode="scaleToFill" id="fAS-jH-a4F" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -234,6 +234,9 @@
                             <constraint firstAttribute="bottomMargin" secondItem="6wP-cV-hvM" secondAttribute="bottom" constant="32" id="zeN-8S-cwW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uK5-5g-gqf"/>
+                        <connections>
+                            <action selector="tapView:" destination="Zkp-jU-35b" eventType="valueChanged" id="Xkd-F8-Qiy"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Contact Detail" id="O2e-le-haw">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="cancel" id="vPB-L4-V49">
@@ -251,6 +254,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="zeN-8S-cwW" id="Ipa-sV-xif"/>
+                        <outlet property="doneButton" destination="Dr0-Rd-dRF" id="ujp-yG-AtP"/>
                         <outlet property="nameTextField" destination="U2a-pa-6jr" id="4Na-d2-eBc"/>
                         <outlet property="phoneTextField" destination="Aow-GU-HTf" id="k4y-nH-nI4"/>
                     </connections>

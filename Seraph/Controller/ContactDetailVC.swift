@@ -13,6 +13,7 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var contactToEdit: Contact?
@@ -51,12 +52,12 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
             title = "Edit Contact"
             nameTextField.text = contactToEdit.name
             phoneTextField.text = contactToEdit.phone
+            doneButton.isEnabled = true
         } else {
             title = "Add Contact"
+            doneButton.isEnabled = false
         }
-        
-        self.hideKeyboardWhenTappedAround()
-        
+                
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -69,7 +70,7 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
             
             let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
             
-            bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height - 16 : 32
+            bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height + 32 : 32
             
             UIView.animate(withDuration: 0.5, animations: { () -> Void in
                 self.view.layoutIfNeeded()
@@ -88,6 +89,17 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
         }
         // Do not add a line break
         return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let oldText = textField.text! as NSString
+        let newText = oldText.replacingCharacters(in: range, with: string) as NSString
+        
+        if nameTextField.text!.count > 0 && phoneTextField.text!.count > 0 {
+            doneButton.isEnabled = newText.length > 0
+        }
+        
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -195,6 +207,11 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
     @IBAction func clearAll(_ sender: Any) {
         nameTextField.text = ""
         phoneTextField.text = ""
+        doneButton.isEnabled = false
+    }
+    
+    @IBAction func tapView(_ sender: Any) {
+        self.view.endEditing(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
