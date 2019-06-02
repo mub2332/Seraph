@@ -89,7 +89,7 @@ class ShortcutsListVC: UITableViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         
         cell.addSubview(button)
-        cell.rightAnchor.constraint(equalTo: button.rightAnchor).isActive = true
+        cell.rightAnchor.constraint(equalTo: button.rightAnchor, constant: 8).isActive = true
         cell.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
         
         return cell

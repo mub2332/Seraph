@@ -14,8 +14,14 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     
     let bgColorView = UIView()
     
+    struct Section {
+        let letter: String
+        let contacts: [Contact]
+    }
+    
     var filteredContacts = [Contact]()
     var allContacts = [Contact]()
+    var sections = [Section]()
     
     private let contactPicker = CNContactPickerViewController()
     
@@ -24,9 +30,11 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = false
-        bgColorView.backgroundColor = UIColor(red: 85/255, green: 186/255, blue: 85/255, alpha: 1)
+        bgColorView.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         
+        tableView.sectionIndexColor = UIColor.lightGray
         filteredContacts = allContacts
+        sectionify()
         
         // Setup search controller
         let searchController = UISearchController(searchResultsController: nil)
@@ -47,6 +55,18 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         databaseController = appDelegate.databaseController        
     }
     
+    func sectionify() {
+        // group the array to ["N": ["Nancy"], "S": ["Sue", "Sam"], "J": ["John", "James", "Jenna"], "E": ["Eric"]]
+        let groupedDictionary = Dictionary(grouping: filteredContacts, by: {String($0.name.lowercased().prefix(1))})
+        // get the keys and sort them
+        let keys = groupedDictionary.keys.sorted()
+        // map the sorted keys to a struct
+        sections = keys.map{ Section(letter: $0, contacts: groupedDictionary[$0]!.sorted(by: { (first, second) -> Bool in
+            return first.name.lowercased() < second.name.lowercased()
+        })) }
+        self.tableView.reloadData()
+    }
+    
     // MARK:- Search results controller
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -60,18 +80,45 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         }
         
         filteredContacts.sort(by: {$0.name.lowercased() < $1.name.lowercased()})
-        tableView.reloadData()
+        sectionify()
     }
     
     // MARK:- Table view delegate
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
+        let label = UILabel(frame: CGRect(x: 10, y: 0, width: tableView.frame.size.width, height: 30))
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = self.sections[section].letter.uppercased()
+        label.textColor = UIColor.lightGray
+        view.addSubview(label)
+        view.backgroundColor = UIColor(red: 11/255, green: 11/255, blue: 11/255, alpha: 1)
+        return view
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sections.map { $0.letter.uppercased() }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].letter.uppercased()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredContacts.count
+//        return filteredContacts.count
+        return sections[section].contacts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        let contact = filteredContacts[indexPath.row]
+//        let contact = filteredContacts[indexPath.row]
+        
+        let section = sections[indexPath.section]
+        let contact = section.contacts[indexPath.row]
         
         cell.textLabel?.text = contact.name
         cell.textLabel?.textColor = UIColor.white
@@ -85,7 +132,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         
         // Set action to perform when swiped
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, handler) in
-            self.deleteContact(contact: self.filteredContacts[indexPath.row])
+            self.deleteContact(contact: self.sections[indexPath.section].contacts[indexPath.row])
         })
         
         deleteAction.backgroundColor = .red
@@ -105,7 +152,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         allContacts = contacts
         filteredContacts = contacts
         filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
-        tableView.reloadData()
+        sectionify()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,6 +162,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         tabBarController?.tabBar.isHidden = false
 
         filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
+        sectionify()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
