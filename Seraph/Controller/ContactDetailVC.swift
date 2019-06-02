@@ -29,6 +29,7 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         
         url += API_KEY + "&number="
         
@@ -194,5 +195,15 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
     @IBAction func clearAll(_ sender: Any) {
         nameTextField.text = ""
         phoneTextField.text = ""
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
 }

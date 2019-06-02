@@ -23,7 +23,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = false
         bgColorView.backgroundColor = UIColor(red: 85/255, green: 186/255, blue: 85/255, alpha: 1)
         
         filteredContacts = allContacts
@@ -112,6 +112,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
         navigationController?.navigationBar.prefersLargeTitles = true
+        tabBarController?.tabBar.isHidden = false
 
         filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
     }
