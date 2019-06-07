@@ -28,7 +28,6 @@ class SOSMessageVC: UIViewController, UIGestureRecognizerDelegate {
         downwardSwipe.cancelsTouchesInView = false
         downwardSwipe.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(downwardSwipe)
-        messageTextField.addGestureRecognizer(downwardSwipe)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)

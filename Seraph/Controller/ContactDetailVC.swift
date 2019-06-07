@@ -39,8 +39,6 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
         downwardSwipe.cancelsTouchesInView = false
         downwardSwipe.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(downwardSwipe)
-        nameTextField.addGestureRecognizer(downwardSwipe)
-        phoneTextField.addGestureRecognizer(downwardSwipe)
         
         nameTextField.delegate = self
         phoneTextField.delegate = self
