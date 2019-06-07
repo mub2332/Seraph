@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactDetailVC : UIViewController, UITextFieldDelegate {
+class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -33,6 +33,14 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
         tabBarController?.tabBar.isHidden = true
         
         url += API_KEY + "&number="
+        
+        let downwardSwipe = UISwipeGestureRecognizer(target: self, action: "tapView:")
+        downwardSwipe.delegate = self
+        downwardSwipe.cancelsTouchesInView = false
+        downwardSwipe.direction = UISwipeGestureRecognizer.Direction.down
+        self.view.addGestureRecognizer(downwardSwipe)
+        nameTextField.addGestureRecognizer(downwardSwipe)
+        phoneTextField.addGestureRecognizer(downwardSwipe)
         
         nameTextField.delegate = self
         phoneTextField.delegate = self
