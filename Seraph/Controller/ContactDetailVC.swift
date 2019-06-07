@@ -39,8 +39,11 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
         nameTextField.tag = 100
         phoneTextField.tag = 101
         
+        nameTextField.setLeftPaddingPoints(10)
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter name",
                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        phoneTextField.setLeftPaddingPoints(10)
         phoneTextField.attributedPlaceholder = NSAttributedString(string: "Enter phone number",
                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
@@ -102,9 +105,20 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func nameChanged(_ sender: Any) {
+        if nameTextField.text!.isEmpty {
+            doneButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func phoneChanged(_ sender: Any) {
+        if phoneTextField.text!.isEmpty {
+            doneButton.isEnabled = false
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
         nameTextField.becomeFirstResponder()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -210,13 +224,13 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate {
         doneButton.isEnabled = false
     }
     
-    @IBAction func tapView(_ sender: Any) {
-        self.view.endEditing(true)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    @IBAction func tapView(_ sender: Any) {
+        self.view.endEditing(true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SOSMessageVC: UIViewController {
+class SOSMessageVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var messageHeader: UILabel!
     @IBOutlet weak var messageTextField: UITextView!
@@ -17,13 +17,18 @@ class SOSMessageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-
         // Do any additional setup after loading the view.
         messageHeader.textColor = UIColor.lightGray
         messageTextField.textColor = UIColor.lightGray
+        messageTextField.contentInset = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
         messageTextField.text = readStringData(forKey: "SOS Message")
+        
+        let downwardSwipe = UISwipeGestureRecognizer(target: self, action: "tapView:")
+        downwardSwipe.delegate = self
+        downwardSwipe.cancelsTouchesInView = false
+        downwardSwipe.direction = UISwipeGestureRecognizer.Direction.down
+        self.view.addGestureRecognizer(downwardSwipe)
+        messageTextField.addGestureRecognizer(downwardSwipe)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -49,7 +54,7 @@ class SOSMessageVC: UIViewController {
             
             let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
             
-            bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height - 16 : 32
+            bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height - 32 : 32
             
             UIView.animate(withDuration: 0.5, animations: { () -> Void in
                 self.view.layoutIfNeeded()
@@ -76,8 +81,13 @@ class SOSMessageVC: UIViewController {
     }
     
     @IBAction func tapView(_ sender: Any) {
+        hideKeyboard()
+    }
+    
+    func hideKeyboard() {
         self.view.endEditing(true)
     }
+    
     /*
     // MARK: - Navigation
 

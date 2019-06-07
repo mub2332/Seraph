@@ -93,22 +93,22 @@
         <scene sceneID="S73-KA-vs5">
             <objects>
                 <tableViewController id="3Ry-dM-mtS" customClass="ContactsListVC" customModule="Seraph" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tp7-pk-eJU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tp7-pk-eJU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="SeE-0p-TfL" style="IBUITableViewCellStyleDefault" id="0aM-dS-JSo">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="SeE-0p-TfL" style="IBUITableViewCellStyleDefault" id="0aM-dS-JSo">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0aM-dS-JSo" id="hLM-ol-eoJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SeE-0p-TfL">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="289" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -118,6 +118,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <segue destination="Zkp-jU-35b" kind="show" identifier="EditContact" id="KrZ-bT-VSC"/>
                                 </connections>
@@ -129,6 +130,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="2nE-Nu-CcF">
+                        <barButtonItem key="leftBarButtonItem" image="import" id="hZq-uG-zn4">
+                            <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="importContacts:" destination="3Ry-dM-mtS" id="sp1-9r-SxZ"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="Cfk-tY-IBG">
                                 <color key="tintColor" red="0.33333333329999998" green="0.72941176470000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,12 +148,6 @@
                                 <color key="tintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="deleteAllContacts:" destination="3Ry-dM-mtS" id="Izq-Pk-eIB"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="bookmarks" id="hZq-uG-zn4">
-                                <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
-                                <connections>
-                                    <action selector="importContacts:" destination="3Ry-dM-mtS" id="sp1-9r-SxZ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -176,70 +177,82 @@
                                     <action selector="clearAll:" destination="Zkp-jU-35b" eventType="touchUpInside" id="pBq-rj-Dhx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptn-GS-bLe">
-                                <rect key="frame" x="0.0" y="64" width="320" height="60"/>
-                                <color key="backgroundColor" red="0.043137254899999998" green="0.043137254899999998" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="U2a-pa-6jr" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
+                                <rect key="frame" x="16" y="140" width="288" height="40"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="vkY-Lv-92Q"/>
+                                    <constraint firstAttribute="height" constant="40" id="aZr-u0-Dq4"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="CONTACT DETAILS">
-                                        <attributes>
-                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="10" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2a-pa-6jr" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
-                                <rect key="frame" x="16" y="140" width="288" height="30"/>
-                                <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                <connections>
+                                    <action selector="nameChanged:" destination="Zkp-jU-35b" eventType="editingChanged" id="IJH-Os-HHF"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-GU-HTf" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
-                                <rect key="frame" x="16" y="186" width="288" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-GU-HTf" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
+                                <rect key="frame" x="16" y="196" width="288" height="40"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="U4v-9C-GfA"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <connections>
+                                    <action selector="phoneChanged:" destination="Zkp-jU-35b" eventType="editingChanged" id="L2o-Z0-gKn"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXG-hA-SN1">
-                                <rect key="frame" x="0.0" y="232" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="252" width="320" height="1"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.75" id="HmK-EM-JOW"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRG-P5-amZ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="60"/>
+                                <color key="backgroundColor" red="0.043129146099090576" green="0.043142460286617279" blue="0.043126225471496582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GeD-yS-LYg"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="CONTACT DETAILS">
+                                        <attributes>
+                                            <color key="NSColor" red="0.52152091264724731" green="0.52159911394119263" blue="0.52150380611419678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="16" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="U2a-pa-6jr" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="2Zz-kZ-TOk"/>
+                            <constraint firstItem="U2a-pa-6jr" firstAttribute="top" secondItem="nRG-P5-amZ" secondAttribute="bottom" constant="16" id="5eB-iL-88q"/>
                             <constraint firstItem="Aow-GU-HTf" firstAttribute="top" secondItem="U2a-pa-6jr" secondAttribute="bottom" constant="16" id="5vU-EO-Veq"/>
+                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="nRG-P5-amZ" secondAttribute="trailing" id="A3f-c9-ndG"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="mXG-hA-SN1" secondAttribute="trailing" id="AOT-EW-q9V"/>
-                            <constraint firstItem="U2a-pa-6jr" firstAttribute="top" secondItem="Ptn-GS-bLe" secondAttribute="bottom" constant="16" id="BIl-oR-byg"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="Aow-GU-HTf" secondAttribute="trailing" constant="16" id="Bcs-Vp-HAF"/>
                             <constraint firstItem="mXG-hA-SN1" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" id="Bls-Br-NRw"/>
-                            <constraint firstItem="Ptn-GS-bLe" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" id="KUS-EN-xZD"/>
                             <constraint firstItem="6wP-cV-hvM" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="32" id="RqH-sU-bIs"/>
+                            <constraint firstItem="nRG-P5-amZ" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" id="gvl-9f-tOU"/>
+                            <constraint firstItem="nRG-P5-amZ" firstAttribute="top" secondItem="uK5-5g-gqf" secondAttribute="top" id="ljM-mo-TCt"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="6wP-cV-hvM" secondAttribute="trailing" constant="32" id="nAi-2Y-J7g"/>
-                            <constraint firstItem="Ptn-GS-bLe" firstAttribute="top" secondItem="uK5-5g-gqf" secondAttribute="top" id="quK-r7-xZA"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="U2a-pa-6jr" secondAttribute="trailing" constant="16" id="sZ5-c7-QQx"/>
-                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="Ptn-GS-bLe" secondAttribute="trailing" id="tpN-xE-sYQ"/>
                             <constraint firstItem="Aow-GU-HTf" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="v6G-u8-gfA"/>
                             <constraint firstItem="mXG-hA-SN1" firstAttribute="top" secondItem="Aow-GU-HTf" secondAttribute="bottom" constant="16" id="ys2-Lt-DPd"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6wP-cV-hvM" secondAttribute="bottom" constant="32" id="zeN-8S-cwW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uK5-5g-gqf"/>
                         <connections>
-                            <action selector="tapView:" destination="Zkp-jU-35b" eventType="valueChanged" id="Xkd-F8-Qiy"/>
+                            <action selector="tapView:" destination="Zkp-jU-35b" eventType="touchUpInside" id="4U3-QP-Y7U"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Contact Detail" id="O2e-le-haw">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="cancel" id="vPB-L4-V49">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="vPB-L4-V49">
                             <color key="tintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="cancel:" destination="Zkp-jU-35b" id="e55-cU-uQO"/>
@@ -326,27 +339,20 @@
                                         <attributes>
                                             <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="Arial-BoldMT"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" firstLineHeadIndent="10" minimumLineHeight="30" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" firstLineHeadIndent="16" minimumLineHeight="30" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ElE-bO-Hf8">
-                                <rect key="frame" x="0.0" y="125" width="320" height="120"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElE-bO-Hf8">
+                                <rect key="frame" x="16" y="140" width="288" height="120"/>
                                 <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="wAO-vD-hQv"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Hello">
-                                        <attributes>
-                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="14" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="10" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fb5-Il-zEK" customClass="OrangeBorderButton" customModule="Seraph" customModuleProvider="target">
@@ -362,7 +368,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKg-f8-4vU">
-                                <rect key="frame" x="0.0" y="245" width="320" height="0.5"/>
+                                <rect key="frame" x="0.0" y="276" width="320" height="1"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.75" id="bAf-RC-l0S"/>
@@ -371,15 +377,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.12939649820327759" green="0.12942153215408325" blue="0.12939104437828064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dKg-f8-4vU" firstAttribute="top" secondItem="ElE-bO-Hf8" secondAttribute="bottom" id="2Da-Ph-kAo"/>
-                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="ElE-bO-Hf8" secondAttribute="trailing" id="2SK-4p-oM2"/>
-                            <constraint firstItem="ElE-bO-Hf8" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" id="GQ9-AD-61d"/>
+                            <constraint firstItem="dKg-f8-4vU" firstAttribute="top" secondItem="ElE-bO-Hf8" secondAttribute="bottom" constant="16" id="2Da-Ph-kAo"/>
+                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="ElE-bO-Hf8" secondAttribute="trailing" constant="16" id="2SK-4p-oM2"/>
+                            <constraint firstItem="ElE-bO-Hf8" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="16" id="GQ9-AD-61d"/>
                             <constraint firstAttribute="bottomMargin" secondItem="fb5-Il-zEK" secondAttribute="bottom" constant="32" id="Gpj-Av-myi"/>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="fb5-Il-zEK" secondAttribute="trailing" constant="32" id="QMf-44-zgI"/>
                             <constraint firstItem="dKg-f8-4vU" firstAttribute="trailing" secondItem="uS1-DH-Cjf" secondAttribute="trailing" id="Qqx-2I-cNR"/>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="oDS-qy-BCE" secondAttribute="trailing" id="cNa-po-tAO"/>
                             <constraint firstItem="dKg-f8-4vU" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" id="dcb-zW-x8X"/>
-                            <constraint firstItem="ElE-bO-Hf8" firstAttribute="top" secondItem="oDS-qy-BCE" secondAttribute="bottom" constant="0.75" id="p9y-mW-DeK"/>
+                            <constraint firstItem="ElE-bO-Hf8" firstAttribute="top" secondItem="oDS-qy-BCE" secondAttribute="bottom" constant="16" id="p9y-mW-DeK"/>
                             <constraint firstItem="oDS-qy-BCE" firstAttribute="top" secondItem="uS1-DH-Cjf" secondAttribute="top" id="pVs-Sp-FTD"/>
                             <constraint firstItem="oDS-qy-BCE" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" id="sdP-gA-72f"/>
                             <constraint firstItem="fb5-Il-zEK" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="32" id="xXA-zf-6ad"/>
@@ -390,19 +396,17 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="SOS Message" id="hzS-6j-Chz">
-                        <rightBarButtonItems>
-                            <barButtonItem image="done" id="IdM-BH-I8f">
-                                <connections>
-                                    <action selector="save:" destination="ecc-iY-2R2" id="a2L-eb-jcg"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="reply" id="O7N-oB-7P0">
-                                <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
-                                <connections>
-                                    <action selector="undo:" destination="ecc-iY-2R2" id="z75-XO-Kp0"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="undo" id="O7N-oB-7P0">
+                            <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="undo:" destination="ecc-iY-2R2" id="z75-XO-Kp0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="done" id="IdM-BH-I8f">
+                            <connections>
+                                <action selector="save:" destination="ecc-iY-2R2" id="a2L-eb-jcg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="Gpj-Av-myi" id="edY-BG-wR8"/>
@@ -498,10 +502,11 @@
     </scenes>
     <resources>
         <image name="SeraphLogo" width="216" height="191"/>
-        <image name="cancel" width="30" height="30"/>
         <image name="done" width="30" height="30"/>
         <image name="home" width="24" height="24"/>
+        <image name="import" width="30" height="30"/>
         <image name="sos" width="30" height="30"/>
+        <image name="undo" width="30" height="30"/>
         <image name="voice" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

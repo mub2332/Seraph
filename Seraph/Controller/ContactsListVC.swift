@@ -45,8 +45,6 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.red], for: .normal)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationController?.navigationBar.prefersLargeTitles = true
-
         
         definesPresentationContext = true
         
@@ -87,7 +85,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
-        let label = UILabel(frame: CGRect(x: 10, y: 0, width: tableView.frame.size.width, height: 30))
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.frame.size.width, height: 30))
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.text = self.sections[section].letter.uppercased()
         label.textColor = UIColor.lightGray
@@ -159,7 +157,6 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
-        navigationController?.navigationBar.prefersLargeTitles = true
         tabBarController?.tabBar.isHidden = false
 
         filteredContacts.sort(by: { $0.name.lowercased() < $1.name.lowercased() })

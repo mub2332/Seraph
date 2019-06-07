@@ -25,10 +25,11 @@
 		D33D70DA227F0ED600FBA31F /* RedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D70D9227F0ED600FBA31F /* RedBorderButton.swift */; };
 		D38B5D982299570200789375 /* ShortcutsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B5D972299570200789375 /* ShortcutsListVC.swift */; };
 		D38B5DA0229986F200789375 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B5D9F229986F200789375 /* UITabBarController+Extension.swift */; };
+		D38B8E2122A465D8003F087F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B8E2022A465D8003F087F /* UITextField+Extension.swift */; };
 		D3966A0A226CBCBD008776B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3966A09226CBCBD008776B8 /* AppDelegate.swift */; };
 		D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A0D226CBCBD008776B8 /* Main.storyboard */; };
-		D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3966A10226CBCBF008776B8 /* Assets.xcassets */; };
 		D3966A14226CBCBF008776B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3966A12226CBCBF008776B8 /* LaunchScreen.storyboard */; };
+		D3BA002222A9401D0004283D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BA002122A9401D0004283D /* Assets.xcassets */; };
 		D3C9CBB2229647AE001F59AB /* Seraph.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB0229647AE001F59AB /* Seraph.xcdatamodeld */; };
 		D3C9CBB52296482C001F59AB /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB32296482C001F59AB /* Contact+CoreDataClass.swift */; };
 		D3C9CBB62296482C001F59AB /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C9CBB42296482C001F59AB /* Contact+CoreDataProperties.swift */; };
@@ -57,12 +58,13 @@
 		D33D70D9227F0ED600FBA31F /* RedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBorderButton.swift; sourceTree = "<group>"; };
 		D38B5D972299570200789375 /* ShortcutsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsListVC.swift; sourceTree = "<group>"; };
 		D38B5D9F229986F200789375 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
+		D38B8E2022A465D8003F087F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		D3966A06226CBCBD008776B8 /* Seraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3966A09226CBCBD008776B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3966A0E226CBCBD008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D3966A10226CBCBF008776B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3966A13226CBCBF008776B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3966A15226CBCBF008776B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3BA002122A9401D0004283D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3C9CBAF2294DAB1001F59AB /* Seraph.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Seraph.entitlements; sourceTree = "<group>"; };
 		D3C9CBB1229647AE001F59AB /* Contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contact.xcdatamodel; sourceTree = "<group>"; };
 		D3C9CBB32296482C001F59AB /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				D33D70BF227D6D4400FBA31F /* String+Extension.swift */,
 				D333BD43229670B8003F4A29 /* UIActivityIndicatorView+Extension.swift */,
 				D38B5D9F229986F200789375 /* UITabBarController+Extension.swift */,
+				D38B8E2022A465D8003F087F /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 		D39669FD226CBCBD008776B8 = {
 			isa = PBXGroup;
 			children = (
+				D3BA002122A9401D0004283D /* Assets.xcassets */,
 				D3966A08226CBCBD008776B8 /* Seraph */,
 				D3966A07226CBCBD008776B8 /* Products */,
 				2DBE5423A36D16C522EAEE10 /* Pods */,
@@ -189,7 +193,6 @@
 				D33D70A8227C7E8A00FBA31F /* Controller */,
 				D3966A09226CBCBD008776B8 /* AppDelegate.swift */,
 				D3966A0D226CBCBD008776B8 /* Main.storyboard */,
-				D3966A10226CBCBF008776B8 /* Assets.xcassets */,
 				D3966A12226CBCBF008776B8 /* LaunchScreen.storyboard */,
 				D3966A15226CBCBF008776B8 /* Info.plist */,
 			);
@@ -273,7 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3966A14226CBCBF008776B8 /* LaunchScreen.storyboard in Resources */,
-				D3966A11226CBCBF008776B8 /* Assets.xcassets in Resources */,
+				D3BA002222A9401D0004283D /* Assets.xcassets in Resources */,
 				D3966A0F226CBCBD008776B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +315,7 @@
 			files = (
 				D3E592982296D6AC005F0FBC /* SOSMessageVC.swift in Sources */,
 				D33D70D4227E83B200FBA31F /* TintedClearButtonTextField.swift in Sources */,
+				D38B8E2122A465D8003F087F /* UITextField+Extension.swift in Sources */,
 				D33D70BE227D6C0300FBA31F /* UIViewController+Extension.swift in Sources */,
 				D33D70D0227D98E500FBA31F /* OrangeBorderButton.swift in Sources */,
 				D33D70C0227D6D4400FBA31F /* String+Extension.swift in Sources */,
