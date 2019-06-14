@@ -9,7 +9,8 @@
 import UIKit
 
 class RedBorderButton: BorderButton {
-
+    
+    // Red border
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.borderColor = UIColor.red.cgColor

@@ -10,6 +10,7 @@ import UIKit
 
 class BorderButton: UIButton {
     
+    // Creates a button with a rounded border
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = 10

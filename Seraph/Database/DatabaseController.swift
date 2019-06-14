@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+// Standard database controller code from labs
+// Manages only one Core Data Model: Contacts
 class DatabaseController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistantContainer: NSPersistentContainer

@@ -88,7 +88,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.frame.size.width, height: 30))
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.text = self.sections[section].letter.uppercased()
-        label.textColor = UIColor.lightGray
+        label.textColor = UIColor.white
         view.addSubview(label)
         view.backgroundColor = UIColor(red: 11/255, green: 11/255, blue: 11/255, alpha: 1)
         return view
@@ -119,7 +119,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         let contact = section.contacts[indexPath.row]
         
         cell.textLabel?.text = contact.name
-        cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.lightGray
         cell.selectedBackgroundView = bgColorView
         return cell
     }
@@ -185,7 +185,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
         contactPicker.delegate = self
         self.present(contactPicker, animated: true, completion: nil)
     }
-    
+    // Display contact picker interface to get contacts from phonebook
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
         for contact in contacts {
             let name = contact.givenName + " " + contact.familyName
@@ -201,7 +201,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
                                                 phone: ((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as? String)!)
         }
     }
-    
+    // convenience method to pass as nil handler to alert function
     func doNothing() {
         return
     }
@@ -211,7 +211,7 @@ class ContactsListVC: UITableViewController, UISearchResultsUpdating, DatabaseLi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditContact" {
             let controller = segue.destination as! ContactDetailVC
-            
+            // pass contact object to edit screen
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 controller.contactToEdit = sections[indexPath.section].contacts[indexPath.row]
             }

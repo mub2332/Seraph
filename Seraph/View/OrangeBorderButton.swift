@@ -10,6 +10,7 @@ import UIKit
 
 class OrangeBorderButton: BorderButton {
     
+    // Orange border
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.borderColor = UIColor.orange.cgColor

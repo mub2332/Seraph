@@ -9,17 +9,18 @@
 import UIKit
 
 extension UIViewController {
-    
+    // Hide when tapped anywhere on the view
+    // Note: note being used anymore
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
+    // Dismiss keyboard
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+    // Display alert and execute the custom handler passed in as an argument
     func displayMessage(title: String, message: String, onCompletion: @escaping () -> Void) {
         // display alert with the specified title and message
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

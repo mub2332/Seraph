@@ -10,16 +10,18 @@ import UIKit
 import Intents
 import IntentsUI
 
-class ShortcutsListVC: UITableViewController {
+class ShortcutsListVC: UITableViewController, UIGestureRecognizerDelegate {
     
+    // Hardcoded shortcuts as I don't want user to be able to make shortcuts
+    // for just about any action as that wouldn't be feasible
     let shortcuts = [
         "Send SOS",
-        "Make Emergency Call",
+        "Emergency Call",
         "Import Contacts",
         "Add Contact",
         "Select Contact",
-        "Delete All Contacts",
-        "Edit SOS Message",
+        "Delete Contacts",
+        "Edit SOS",
         "Edit Shortcuts"
     ]
     
@@ -42,23 +44,23 @@ class ShortcutsListVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        tableView.estimatedRowHeight = 60
         tableView.rowHeight = 60
+        tableView.estimatedRowHeight = 60
         let shortcut = shortcuts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShortcutCell")! as UITableViewCell
         cell.textLabel?.text = shortcut
-        cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.lightGray
         
         let button = INUIAddVoiceShortcutButton(style: .blackOutline)
-        
+        // Attach button to the appropriate shortcut
         switch shortcut {
         case "Send SOS":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.SendSOS",
                                        withTitle: "Send SOS"), for: button)
             break
-        case "Make Emergency Call":
+        case "Emergency Call":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.MakeEmergencyCall",
-                                       withTitle: "Make Emergency Call"), for: button)
+                                       withTitle: "Emergency Call"), for: button)
             break
         case "Import Contacts":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.ImportContacts",
@@ -70,11 +72,11 @@ class ShortcutsListVC: UITableViewController {
         case "Select Contact":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.SelectContact", withTitle: "Select Contact"), for: button)
             break
-        case "Delete All Contacts":
-            setShortcut(createActivity(withIdentifier: "com.example.seraph.DeleteAllContacts", withTitle: "Delete All Contacts"), for: button)
+        case "Delete Contacts":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.DeleteAllContacts", withTitle: "Delete Contacts"), for: button)
             break
-        case "Edit SOS Message":
-            setShortcut(createActivity(withIdentifier: "com.example.seraph.EditSOSMessage", withTitle: "Edit SOS Message"), for: button)
+        case "Edit SOS":
+            setShortcut(createActivity(withIdentifier: "com.example.seraph.EditSOSMessage", withTitle: "Edit SOS"), for: button)
             break
         case "Edit Shortcuts":
             setShortcut(createActivity(withIdentifier: "com.example.seraph.EditShortcuts", withTitle: "Edit Shortcuts"), for: button)
@@ -84,16 +86,15 @@ class ShortcutsListVC: UITableViewController {
         }
         
         button.delegate = self
-        
         button.translatesAutoresizingMaskIntoConstraints = false
-        
+        // Add button to cell
         cell.addSubview(button)
         cell.rightAnchor.constraint(equalTo: button.rightAnchor, constant: 8).isActive = true
-        cell.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
+        cell.centerYAnchor.constraint(equalTo: button.centerYAnchor, constant: 0).isActive = true
         
         return cell
     }
-    
+    // create activity with specified arguments
     func createActivity(withIdentifier identifier: String, withTitle title: String) -> NSUserActivity {
         let activity = NSUserActivity(activityType: identifier)
         activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: identifier)
@@ -102,12 +103,15 @@ class ShortcutsListVC: UITableViewController {
         activity.isEligibleForPrediction = true
         return activity
     }
-    
+    // assign shortcut to siri button
     func setShortcut(_ activity: NSUserActivity, for button: INUIAddVoiceShortcutButton) {
         button.shortcut = INShortcut(userActivity: activity)
     }
 
 }
+
+// MARK:- Siri Shortcut delegates
+// Handles presenting the appropriate Siri Shortcut view
 
 extension ShortcutsListVC: INUIAddVoiceShortcutButtonDelegate {
     func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {

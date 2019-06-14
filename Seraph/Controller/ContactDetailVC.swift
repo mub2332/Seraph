@@ -14,11 +14,10 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var contactToEdit: Contact?
     var allContacts = [Contact]()
-    
+    // API stuff
     let API_KEY = "360584e4d1daf51d07915c2f3ddd2984"
     var url = "http://apilayer.net/api/validate?access_key="
     
@@ -33,7 +32,7 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
         tabBarController?.tabBar.isHidden = true
         
         url += API_KEY + "&number="
-        
+        // downward swipe to dismiss keyboard
         let downwardSwipe = UISwipeGestureRecognizer(target: self, action: "tapView:")
         downwardSwipe.delegate = self
         downwardSwipe.cancelsTouchesInView = false
@@ -44,19 +43,19 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
         phoneTextField.delegate = self
         nameTextField.tag = 100
         phoneTextField.tag = 101
-        
+        // Set up text field appearance
         nameTextField.setLeftPaddingPoints(10)
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter name",
-                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         
         phoneTextField.setLeftPaddingPoints(10)
         phoneTextField.attributedPlaceholder = NSAttributedString(string: "Enter phone number",
-                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         
         // Setup database controller
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
-        
+        // Setup view according to segue information
         if let contactToEdit = contactToEdit {
             title = "Edit Contact"
             nameTextField.text = contactToEdit.name
@@ -66,28 +65,8 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
             title = "Add Contact"
             doneButton.isEnabled = false
         }
-                
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    @objc func handleKeyboardNotification(_ notification: Notification) {
-        
-        if let userInfo = notification.userInfo {
-            
-            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-            
-            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
-            
-            bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height + 32 : 32
-            
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.view.layoutIfNeeded()
-            })
-        }
-        
-    }
-    
+    // pass control to next text field in hierarchy
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
@@ -99,7 +78,7 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
         // Do not add a line break
         return false
     }
-    
+    // enable done button when both inputs are filled in
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text! as NSString
         let newText = oldText.replacingCharacters(in: range, with: string) as NSString
@@ -112,27 +91,24 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
     }
     
     @IBAction func nameChanged(_ sender: Any) {
-        if nameTextField.text!.isEmpty {
-            doneButton.isEnabled = false
-        }
+        checkIfNameAndPhoneProvided()
     }
     
     @IBAction func phoneChanged(_ sender: Any) {
-        if phoneTextField.text!.isEmpty {
+        checkIfNameAndPhoneProvided()
+    }
+    // only enable done button if both inputs provided
+    func checkIfNameAndPhoneProvided() {
+        if nameTextField.text!.isEmpty || phoneTextField.text!.isEmpty {
             doneButton.isEnabled = false
+        } else {
+            doneButton.isEnabled = true
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameTextField.becomeFirstResponder()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -143,7 +119,7 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
     @IBAction func saveContact(_ sender: Any) {
         nameTextField.text = nameTextField.text?.trimTrailingWhitespace()
         phoneTextField.text = phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+        // check if both inputs are filled
         if nameTextField.text == "" || phoneTextField.text == "" {
             self.displayMessage(title: "All inputs must be filled", message: "Please enter both name and a valid phone number", onCompletion: doNothing)
             return
@@ -158,7 +134,8 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
             self.displayMessage(title: "Oops!", message: "A contact with that name already exists. Please pick a different name", onCompletion: self.doNothing)
             return
         }
-        
+        // For some reason API only handles international format
+        // Using regex for local format
         if phone.starts(with: "+") {
             var request = URLRequest(url: URL(string: url + phoneTextField.text!)!)
             request.httpMethod = "GET"
@@ -169,11 +146,12 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
                     let phoneObject = try JSONDecoder().decode(Phone.self, from: data!)
                     
                     DispatchQueue.main.async {
+                        // Display error message
                         if !phoneObject.valid {
                             self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid phone number", onCompletion: self.doNothing)
                             return
                         }
-                        
+                        // Save contact
                         if let contact = self.contactToEdit {
                             let _ = self.databaseController?.editContact(contact: contact, name: name, phone: phone)
                             self.displayMessage(title: "Success!", message: "Contact has been updated!",
@@ -187,7 +165,7 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
                     
                 } catch let error as NSError {
                     print(error.localizedDescription)
-                    
+                    // Display message if service didn't run
                     DispatchQueue.main.async {
                         self.displayMessage(title: "Oops!", message: "Phone number validation didn't work", onCompletion: self.doNothing)
                         return
@@ -197,11 +175,12 @@ class ContactDetailVC : UIViewController, UITextFieldDelegate, UIGestureRecogniz
                 
                 }.resume()
         } else {
+            // Error if invalid number
             if !PhoneValidator.isPhone(phoneTextField.text!) {
                 self.displayMessage(title: "Invalid phone number entered", message: "Please enter a valid Australian phone number", onCompletion: doNothing)
                 return
             }
-            
+            // Save contact
             if let contact = self.contactToEdit {
                 let _ = self.databaseController?.editContact(contact: contact, name: name, phone: phone)
                 self.displayMessage(title: "Success!", message: "Contact has been updated!",

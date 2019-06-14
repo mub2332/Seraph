@@ -22,61 +22,25 @@ class SOSMessageVC: UIViewController, UIGestureRecognizerDelegate {
         messageTextField.textColor = UIColor.lightGray
         messageTextField.contentInset = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
         messageTextField.text = readStringData(forKey: "SOS Message")
-        
+        // downward swipe to dismiss keyboard
         let downwardSwipe = UISwipeGestureRecognizer(target: self, action: "tapView:")
         downwardSwipe.delegate = self
         downwardSwipe.cancelsTouchesInView = false
         downwardSwipe.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(downwardSwipe)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        messageTextField.text = readStringData(forKey: "SOS Message")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc func handleKeyboardNotification(_ notification: Notification) {
-        
-        if let userInfo = notification.userInfo {
-            
-            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-            
-            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
-            
-            bottomConstraint?.constant = isKeyboardShowing ? keyboardFrame!.height - 32 : 32
-            
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.view.layoutIfNeeded()
-            })
-        }
-        
-    }
-    
+    // save to user defaults
     @IBAction func save(_ sender: Any) {
         writeData(forKey: "SOS Message", withValue: messageTextField.text)
-        self.displayMessage(title: "Success!", message: "Message has been saved!", onCompletion: undoEdit)
+        self.displayMessage(title: "Success!", message: "Message has been saved!", onCompletion: doNothing)
     }
     
-    @IBAction func clear(_ sender: Any) {
-        messageTextField.text = ""
+    func doNothing() {
+        return
     }
     
     @IBAction func undo(_ sender: Any) {
-        undoEdit()
-    }
-    
-    func undoEdit() {
-        messageTextField.text = readStringData(forKey: "SOS Message")
+        messageTextField.text = ""
     }
     
     @IBAction func tapView(_ sender: Any) {

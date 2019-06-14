@@ -14,7 +14,7 @@ extension UITabBarController: UITabBarControllerDelegate  {
         super.viewDidLoad()
         delegate = self
     }
-    
+    // Set up cross dissolve animation on tab switch
     public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
         guard let fromView = selectedViewController?.view, let toView = viewController.view else {

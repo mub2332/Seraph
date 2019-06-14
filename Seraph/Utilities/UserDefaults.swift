@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Intents
 
+// Set up user default read and write methods
 let userDefault = UserDefaults.standard
 
 func writeData(forKey key: String, withValue value: Any) {

@@ -23,6 +23,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VzA-3W-Xic"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Send SOS">
                                     <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 </state>
@@ -53,6 +54,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="s6D-SD-7tu"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Make Emergency Call">
                                     <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 </state>
@@ -130,7 +132,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="2nE-Nu-CcF">
-                        <barButtonItem key="leftBarButtonItem" image="import" id="hZq-uG-zn4">
+                        <barButtonItem key="leftBarButtonItem" title="Import" image="import" id="hZq-uG-zn4">
                             <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="importContacts:" destination="3Ry-dM-mtS" id="sp1-9r-SxZ"/>
@@ -165,18 +167,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wP-cV-hvM" customClass="OrangeBorderButton" customModule="Seraph" customModuleProvider="target">
-                                <rect key="frame" x="32" y="437" width="256" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="LWj-fV-28l"/>
-                                </constraints>
-                                <state key="normal" title="Clear All">
-                                    <color key="titleColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
-                                </state>
-                                <connections>
-                                    <action selector="clearAll:" destination="Zkp-jU-35b" eventType="touchUpInside" id="pBq-rj-Dhx"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="U2a-pa-6jr" customClass="TintedClearButtonTextField" customModule="Seraph" customModuleProvider="target">
                                 <rect key="frame" x="16" y="140" width="288" height="40"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -184,7 +174,7 @@
                                     <constraint firstAttribute="height" constant="40" id="aZr-u0-Dq4"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                 <connections>
                                     <action selector="nameChanged:" destination="Zkp-jU-35b" eventType="editingChanged" id="IJH-Os-HHF"/>
@@ -197,7 +187,7 @@
                                     <constraint firstAttribute="height" constant="40" id="U4v-9C-GfA"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 <connections>
                                     <action selector="phoneChanged:" destination="Zkp-jU-35b" eventType="editingChanged" id="L2o-Z0-gKn"/>
@@ -219,8 +209,8 @@
                                 <attributedString key="attributedText">
                                     <fragment content="CONTACT DETAILS">
                                         <attributes>
-                                            <color key="NSColor" red="0.52152091264724731" green="0.52159911394119263" blue="0.52150380611419678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <color key="NSColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="16" name="Arial-BoldMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="16" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -237,14 +227,11 @@
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="mXG-hA-SN1" secondAttribute="trailing" id="AOT-EW-q9V"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="Aow-GU-HTf" secondAttribute="trailing" constant="16" id="Bcs-Vp-HAF"/>
                             <constraint firstItem="mXG-hA-SN1" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" id="Bls-Br-NRw"/>
-                            <constraint firstItem="6wP-cV-hvM" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="32" id="RqH-sU-bIs"/>
                             <constraint firstItem="nRG-P5-amZ" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" id="gvl-9f-tOU"/>
                             <constraint firstItem="nRG-P5-amZ" firstAttribute="top" secondItem="uK5-5g-gqf" secondAttribute="top" id="ljM-mo-TCt"/>
-                            <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="6wP-cV-hvM" secondAttribute="trailing" constant="32" id="nAi-2Y-J7g"/>
                             <constraint firstItem="uK5-5g-gqf" firstAttribute="trailing" secondItem="U2a-pa-6jr" secondAttribute="trailing" constant="16" id="sZ5-c7-QQx"/>
                             <constraint firstItem="Aow-GU-HTf" firstAttribute="leading" secondItem="uK5-5g-gqf" secondAttribute="leading" constant="16" id="v6G-u8-gfA"/>
                             <constraint firstItem="mXG-hA-SN1" firstAttribute="top" secondItem="Aow-GU-HTf" secondAttribute="bottom" constant="16" id="ys2-Lt-DPd"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="6wP-cV-hvM" secondAttribute="bottom" constant="32" id="zeN-8S-cwW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uK5-5g-gqf"/>
                         <connections>
@@ -266,7 +253,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomConstraint" destination="zeN-8S-cwW" id="Ipa-sV-xif"/>
                         <outlet property="doneButton" destination="Dr0-Rd-dRF" id="ujp-yG-AtP"/>
                         <outlet property="nameTextField" destination="U2a-pa-6jr" id="4Na-d2-eBc"/>
                         <outlet property="phoneTextField" destination="Aow-GU-HTf" id="k4y-nH-nI4"/>
@@ -308,6 +294,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -320,7 +307,7 @@
             </objects>
             <point key="canvasLocation" x="-181.875" y="703.52112676056333"/>
         </scene>
-        <!--SOS Message-->
+        <!--SOS-->
         <scene sceneID="I4h-k5-sxt">
             <objects>
                 <viewController id="ecc-iY-2R2" customClass="SOSMessageVC" customModule="Seraph" customModuleProvider="target" sceneMemberID="viewController">
@@ -337,38 +324,26 @@
                                 <attributedString key="attributedText">
                                     <fragment content="EDIT SOS MESSAGE">
                                         <attributes>
-                                            <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <color key="NSColor" red="0.48230850696563721" green="0.48238134384155273" blue="0.4822925329208374" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="16" name="Arial-BoldMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" firstLineHeadIndent="16" minimumLineHeight="30" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElE-bO-Hf8">
-                                <rect key="frame" x="16" y="140" width="288" height="120"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" indicatorStyle="black" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="ElE-bO-Hf8">
+                                <rect key="frame" x="16" y="140" width="288" height="100"/>
                                 <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="wAO-vD-hQv"/>
+                                    <constraint firstAttribute="height" constant="100" id="wAO-vD-hQv"/>
                                 </constraints>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="14"/>
+                                <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fb5-Il-zEK" customClass="OrangeBorderButton" customModule="Seraph" customModuleProvider="target">
-                                <rect key="frame" x="32" y="437" width="256" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="koD-V7-qSS"/>
-                                </constraints>
-                                <state key="normal" title="Clear">
-                                    <color key="titleColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
-                                </state>
-                                <connections>
-                                    <action selector="clear:" destination="ecc-iY-2R2" eventType="touchUpInside" id="p2j-VU-pb0"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKg-f8-4vU">
-                                <rect key="frame" x="0.0" y="276" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="256" width="320" height="1"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.75" id="bAf-RC-l0S"/>
@@ -380,24 +355,21 @@
                             <constraint firstItem="dKg-f8-4vU" firstAttribute="top" secondItem="ElE-bO-Hf8" secondAttribute="bottom" constant="16" id="2Da-Ph-kAo"/>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="ElE-bO-Hf8" secondAttribute="trailing" constant="16" id="2SK-4p-oM2"/>
                             <constraint firstItem="ElE-bO-Hf8" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="16" id="GQ9-AD-61d"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="fb5-Il-zEK" secondAttribute="bottom" constant="32" id="Gpj-Av-myi"/>
-                            <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="fb5-Il-zEK" secondAttribute="trailing" constant="32" id="QMf-44-zgI"/>
                             <constraint firstItem="dKg-f8-4vU" firstAttribute="trailing" secondItem="uS1-DH-Cjf" secondAttribute="trailing" id="Qqx-2I-cNR"/>
                             <constraint firstItem="uS1-DH-Cjf" firstAttribute="trailing" secondItem="oDS-qy-BCE" secondAttribute="trailing" id="cNa-po-tAO"/>
                             <constraint firstItem="dKg-f8-4vU" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" id="dcb-zW-x8X"/>
                             <constraint firstItem="ElE-bO-Hf8" firstAttribute="top" secondItem="oDS-qy-BCE" secondAttribute="bottom" constant="16" id="p9y-mW-DeK"/>
                             <constraint firstItem="oDS-qy-BCE" firstAttribute="top" secondItem="uS1-DH-Cjf" secondAttribute="top" id="pVs-Sp-FTD"/>
                             <constraint firstItem="oDS-qy-BCE" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" id="sdP-gA-72f"/>
-                            <constraint firstItem="fb5-Il-zEK" firstAttribute="leading" secondItem="uS1-DH-Cjf" secondAttribute="leading" constant="32" id="xXA-zf-6ad"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uS1-DH-Cjf"/>
                         <connections>
                             <action selector="tapView:" destination="ecc-iY-2R2" eventType="touchUpInside" id="roQ-a5-gRy"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="SOS Message" id="hzS-6j-Chz">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="undo" id="O7N-oB-7P0">
-                            <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                    <navigationItem key="navigationItem" title="SOS" id="hzS-6j-Chz">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="clear" id="O7N-oB-7P0">
+                            <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="undo:" destination="ecc-iY-2R2" id="z75-XO-Kp0"/>
                             </connections>
@@ -409,8 +381,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomConstraint" destination="Gpj-Av-myi" id="edY-BG-wR8"/>
-                        <outlet property="clearButton" destination="fb5-Il-zEK" id="jtW-9r-aAW"/>
                         <outlet property="messageHeader" destination="oDS-qy-BCE" id="3iP-sN-mgk"/>
                         <outlet property="messageTextField" destination="ElE-bO-Hf8" id="6AP-Tl-o8K"/>
                     </connections>
@@ -470,6 +440,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="hUz-3M-97R">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -489,6 +462,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Oy6-qF-d1A">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -502,11 +478,11 @@
     </scenes>
     <resources>
         <image name="SeraphLogo" width="216" height="191"/>
+        <image name="clear" width="30" height="30"/>
         <image name="done" width="30" height="30"/>
         <image name="home" width="24" height="24"/>
         <image name="import" width="30" height="30"/>
         <image name="sos" width="30" height="30"/>
-        <image name="undo" width="30" height="30"/>
         <image name="voice" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

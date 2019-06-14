@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Convenience class for validating phone numbers
 class PhoneValidator {
     class func isPhone(_ string: String) -> Bool {
         return string.isValid(regex: .phone)

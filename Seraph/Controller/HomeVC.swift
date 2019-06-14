@@ -28,7 +28,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // setup location manager
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
         locationManager.delegate = self
@@ -38,11 +38,13 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
     }
-    
+    // Get location on a timed basis
+    // this is done because during initial load a location can't be retrieved
+    // with sufficient accuracy and the button click does nothing
     @IBAction func sendSOS(_ sender: Any) {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(getLocationAndSendMessage), userInfo: nil, repeats: true)
     }
-    
+    // Call emergency number
     @IBAction func makeEmergencyCall(_ sender: Any) {
         if let url = URL(string: "tel://112"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
@@ -52,7 +54,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
             }
         }
     }
-    
+    // Get location and send message to all contacts
     @objc func getLocationAndSendMessage() {
         let messageVC = MFMessageComposeViewController()
 
@@ -75,7 +77,7 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         }
         
     }
-    
+    // Setup loading spinner
     func showLoader(view: UIView) -> UIActivityIndicatorView {
         //Customize as per your need
         let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height:40))
@@ -91,7 +93,8 @@ class HomeVC : UIViewController, MFMessageComposeViewControllerDelegate, CLLocat
         
         return spinner
     }
-    
+    // Make vcard with current location
+    // Ref: https://gist.github.com/Manabu-GT/6f223ceea1d9a6facb9b745e942f70c9
     func locationVCardURLFromCoordinate(coordinate: CLLocationCoordinate2D) -> NSURL?
     {
         guard let cachesPathString = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first else {

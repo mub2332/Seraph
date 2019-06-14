@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Code for tinting the clear button in a text field
+// Ref: https://stackoverflow.com/questions/27944781/how-to-change-the-tint-color-of-the-clear-button-on-a-uitextfield
 class TintedClearButtonTextField: UITextField {
     
     var tintedClearImage: UIImage?

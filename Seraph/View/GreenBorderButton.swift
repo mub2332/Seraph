@@ -10,6 +10,7 @@ import UIKit
 
 class GreenBorderButton: BorderButton {
     
+    // Green border
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.borderColor = UIColor(red: 85/255, green: 186/255, blue: 85/255, alpha: 1).cgColor
